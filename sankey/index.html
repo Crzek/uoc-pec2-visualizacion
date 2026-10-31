@@ -25,7 +25,7 @@
   </header>
   <p class="eyebrow">Técnica 1 · Diagrama de Sankey</p>
   <h1>¿De dónde sale la energía que usa España y a dónde va?</h1>
-  <p class="lede">Flujos de energía en 2024, en teravatios-hora (TWh). A la izquierda, la electricidad generada según su fuente; en el centro, los cinco vectores energéticos que llegan al consumidor; a la derecha, el sector que los consume. El grosor de cada banda es proporcional a la cantidad de energía.</p>
+  <p class="lede">He representado los flujos de energía de España en 2024, en teravatios-hora (TWh). A la izquierda, la electricidad generada según su fuente; en el centro, los cinco vectores energéticos que llegan al consumidor; a la derecha, el sector que los consume. El grosor de cada banda es proporcional a la cantidad de energía.</p>
 
   <div class="grid2">
     <section class="card">
@@ -41,10 +41,10 @@
       <div class="legend" id="legend"></div>
       <div class="chart" id="chart"></div>
       <details class="tabla"><summary>Ver los datos en tabla</summary><div id="tabla"></div></details>
-      <p class="source">Fuente: <a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_bal_peh/default/table">Eurostat nrg_bal_peh</a> (generación bruta de electricidad, GWh) y <a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_bal_c/default/table">Eurostat nrg_bal_c</a> (consumo final de energía, ktoe), España, 2024. Conversión: 1 ktoe = 11,63 GWh. Elaboración: Erick (UOC, Máster en Ciencia de Datos).</p>
+      <p class="source">Fuente: <a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_bal_peh/default/table">Eurostat nrg_bal_peh</a> (generación bruta de electricidad, GWh) y <a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_bal_c/default/table">Eurostat nrg_bal_c</a> (consumo final de energía, ktoe), España, 2024. Conversión: 1 ktoe = 11,63 GWh. Elaboración propia.</p>
     </section>
     <aside class="card insights">
-      <h2>Qué muestra</h2>
+      <h2>Qué he encontrado</h2>
       <ul id="insights"></ul>
     </aside>
   </div>
@@ -140,7 +140,7 @@ d3.json("flujos_energia_espana_2024.json").then(data => {
     <li>Pero la electricidad solo cubre <strong>${pctES(elecFinal / finalTot)}</strong> del consumo final. El vector dominante sigue siendo el <strong>petróleo (${pctES(v("Petróleo y derivados") / finalTot)})</strong>.</li>
     <li>El <strong>transporte</strong> es el mayor consumidor (${pctES(transp.value / finalTot)}) y depende del petróleo en un <strong>${pctES(transpOil / transp.value)}</strong>.</li>
     <li>${fmtES(v("Pérdidas, autoconsumo y exportación neta"))} TWh de la electricidad generada no llegan al consumo final: pérdidas de red, autoconsumo de centrales y exportación neta.</li>
-    <li><strong>Lectura:</strong> la descarbonización eléctrica avanza; el reto es electrificar transporte e industria.</li>`);
+    <li><strong>Mi lectura:</strong> la descarbonización eléctrica avanza; el reto es electrificar transporte e industria.</li>`);
 
   // Tabla accesible
   const rows = graph.links.map(l => [l.source.name, l.target.name, l.value]);

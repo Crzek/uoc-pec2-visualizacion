@@ -32,7 +32,7 @@
   </header>
   <p class="eyebrow">Técnica 2 · Diagrama de Voronoi</p>
   <h1>¿Qué zona de Barcelona “cubre” cada estación de Bicing?</h1>
-  <p class="lede">Cada celda contiene todos los puntos de la ciudad que tienen esa estación como la más cercana (distancia en línea recta). El color codifica el área de cada celda (escala sobre el mapa): cuanto <strong>más grande</strong> es la celda, más territorio debe cubrir la estación y más lejos queda para quien vive allí.</p>
+  <p class="lede">He dividido Barcelona en una celda por cada estación de Bicing. Cada celda contiene todos los puntos de la ciudad que tienen esa estación como la más cercana (distancia en línea recta). El color codifica el área de cada celda (escala sobre el mapa): cuanto <strong>más grande</strong> es la celda, más territorio debe cubrir la estación y más lejos queda para quien vive allí.</p>
 
   <div class="grid2">
     <section class="card">
@@ -46,10 +46,10 @@
       </div>
       <div class="chart" id="chart"></div>
       <details class="tabla"><summary>Ver las 20 celdas más grandes en tabla</summary><div id="tabla"></div></details>
-      <p class="source">Fuentes: estaciones de <a href="https://www.bicing.barcelona/">Bicing</a> (feed público GBFS de BSM, consultado vía <a href="https://api.citybik.es/v2/networks/bicing">CityBikes API</a> el 31/10/2026; se excluyen 4 estaciones sin anclajes operativos). Límites de distrito: <a href="https://opendata-ajuntament.barcelona.cat/">Ajuntament de Barcelona / CartoBCN</a> (CC-BY). Celdas recortadas al término municipal. Elaboración: Erick (UOC).</p>
+      <p class="source">Fuentes: estaciones de <a href="https://www.bicing.barcelona/">Bicing</a> (feed público GBFS de BSM, consultado vía <a href="https://api.citybik.es/v2/networks/bicing">CityBikes API</a> el 31/10/2026; he excluido 4 estaciones sin anclajes operativos). Límites de distrito: <a href="https://opendata-ajuntament.barcelona.cat/">Ajuntament de Barcelona / CartoBCN</a> (CC-BY). He recortado las celdas al término municipal. Elaboración propia.</p>
     </section>
     <aside class="card insights">
-      <h2>Qué muestra</h2>
+      <h2>Qué he encontrado</h2>
       <ul id="insights"></ul>
       <h2 style="margin-top:14px">Área mediana de celda por distrito (km²)</h2>
       <div id="dists"></div>

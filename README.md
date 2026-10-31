@@ -1,6 +1,6 @@
 # PEC 2 · Visualización de datos (UOC)
 
-Tres técnicas de visualización asignadas, cada una con datos abiertos y publicada en GitHub Pages:
+En esta PEC me han asignado tres técnicas de visualización. He aplicado cada una a un conjunto de datos abiertos y las he publicado en GitHub Pages:
 
 | Técnica | Visualización | Datos |
 |---|---|---|
@@ -13,7 +13,7 @@ Portada: https://crzek.github.io/uoc-pec2-visualizacion/
 ## Estructura
 
 - `sankey/`, `voronoi/`, `beeswarm/`: cada página (`index.html`) y sus datos ya preparados.
-- `scripts/preparar_datos.py`: genera el JSON del Sankey, recorta las celdas de Voronoi al término municipal y calcula su área.
+- `scripts/preparar_datos.py`: el script con el que genero el JSON del Sankey, recorto las celdas de Voronoi al término municipal y calculo su área.
 - `lib/`: D3.js v7, d3-sankey y la hoja de estilos compartida (modo claro y oscuro).
 
-Las páginas son HTML estático con D3. No hace falta compilar nada.
+He hecho las páginas en HTML estático con D3, así que no hace falta compilar nada.
