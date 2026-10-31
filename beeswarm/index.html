@@ -163,12 +163,14 @@ d3.csv("esperanza_vida_2023.csv", d3.autoType).then(data => {
   const esp = data.find(d => d.iso3 === "ESP"), espRank = sorted.indexOf(esp) + 1;
   const ssa = data.filter(d => d.region === "África subsahariana");
   const ssaAbove75 = ssa.filter(d => d.esperanza_vida >= 75);
+  const spread = d3.groups(data, d => d.region).map(([k, v]) => ({ k, lo: d3.least(v, d => d.esperanza_vida), hi: d3.greatest(v, d => d.esperanza_vida) }))
+    .sort((a, b) => (b.hi.esperanza_vida - b.lo.esperanza_vida) - (a.hi.esperanza_vida - a.lo.esperanza_vida))[0];
   const byInc = INC.map(k => d3.median(data.filter(d => d.renta === k), d => d.esperanza_vida));
   d3.select("#insights").html(`
     <li>Entre <strong>${sorted[sorted.length - 1].pais} (${nf(sorted[sorted.length - 1].esperanza_vida)})</strong> y <strong>${sorted[0].pais} (${nf(sorted[0].esperanza_vida)})</strong> hay ${nf(sorted[0].esperanza_vida - sorted[sorted.length - 1].esperanza_vida)} años de diferencia.</li>
     <li><strong>España: ${nf(esp.esperanza_vida)} años</strong>, puesto ${espRank} de ${data.length}, en la cola derecha de Europa.</li>
-    <li>África subsahariana es la región más baja y compacta: solo ${ssaAbove75.length} de ${ssa.length} países superan los 75 años (${ssaAbove75.map(d => d.pais).join(", ")}).</li>
-    <li>Europa y Asia central es la más dispersa: va de ${nf(d3.min(data.filter(d => d.region === "Europa y Asia central"), d => d.esperanza_vida))} a ${nf(d3.max(data.filter(d => d.region === "Europa y Asia central"), d => d.esperanza_vida))} años. Una media lo ocultaría.</li>
+    <li>África subsahariana tiene la mediana más baja (${nf(regions[0].med)} años): solo ${ssaAbove75.length} de ${ssa.length} países superan los 75 (${ssaAbove75.map(d => d.pais).join(", ")}).</li>
+    <li>${spread.k} es la región más dispersa: de ${spread.lo.pais} (${nf(spread.lo.esperanza_vida)}) a ${spread.hi.pais} (${nf(spread.hi.esperanza_vida)}), ${nf(spread.hi.esperanza_vida - spread.lo.esperanza_vida)} años dentro de un mismo grupo. Una media lo ocultaría.</li>
     <li>El color revela el gradiente de renta: medianas de ${byInc.map(nf).join(" → ")} años de renta baja a alta.</li>`);
 
   d3.select("#tabla").html(`<table><thead><tr><th>#</th><th>País</th><th>Región</th><th>Renta</th><th>Años</th></tr></thead><tbody>${sorted.map((d, i) => `<tr><td class="n">${i + 1}</td><td>${d.pais}</td><td>${d.region}</td><td>${INC_ES[d.renta]}</td><td class="n">${nf(d.esperanza_vida)}</td></tr>`).join("")}</tbody></table>`);
