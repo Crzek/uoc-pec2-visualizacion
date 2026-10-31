@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sankey · Energía en España 2024</title>
+<meta name="description" content="Diagrama de Sankey de los flujos de energía en España en 2024: de la generación eléctrica por fuente al consumo final por sector. Datos de Eurostat.">
+<link rel="stylesheet" href="../lib/estilo.css">
+<style>
+  .node rect { stroke: var(--surface); stroke-width: 1; }
+  .link { fill: none; stroke-opacity: .38; mix-blend-mode: normal; transition: stroke-opacity .15s; }
+  .link.dim { stroke-opacity: .07; }
+  .link.hi { stroke-opacity: .7; }
+  .node.dim rect { opacity: .3; }
+  .lbl { font-size: 12.5px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+  .lbl .v { fill: var(--ink-2); font-weight: 400; }
+  .colhead { font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; fill: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <a href="../">← PEC 2 · Visualización de datos</a>
+    <a href="https://github.com/Crzek/uoc-pec2-visualizacion/tree/main/sankey">Código y datos</a>
+  </header>
+  <p class="eyebrow">Técnica 1 · Diagrama de Sankey</p>
+  <h1>¿De dónde sale la energía que usa España y a dónde va?</h1>
+  <p class="lede">Flujos de energía en 2024, en teravatios-hora (TWh). A la izquierda, la electricidad generada según su fuente; en el centro, los cinco vectores energéticos que llegan al consumidor; a la derecha, el sector que los consume. El grosor de cada banda es proporcional a la cantidad de energía.</p>
+
+  <div class="grid2">
+    <section class="card">
+      <div class="controls">
+        <span>Resaltar origen:</span>
+        <div class="seg" role="group" aria-label="Resaltar familia">
+          <button data-f="all" aria-pressed="true">Todo</button>
+          <button data-f="renovable" aria-pressed="false">Renovable</button>
+          <button data-f="fosil" aria-pressed="false">Fósil</button>
+          <button data-f="nuclear" aria-pressed="false">Nuclear</button>
+        </div>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="chart" id="chart"></div>
+      <details class="tabla"><summary>Ver los datos en tabla</summary><div id="tabla"></div></details>
+      <p class="source">Fuente: <a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_bal_peh/default/table">Eurostat nrg_bal_peh</a> (generación bruta de electricidad, GWh) y <a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_bal_c/default/table">Eurostat nrg_bal_c</a> (consumo final de energía, ktoe), España, 2024. Conversión: 1 ktoe = 11,63 GWh. Elaboración: Erick (UOC, Máster en Ciencia de Datos).</p>
+    </section>
+    <aside class="card insights">
+      <h2>Qué muestra</h2>
+      <ul id="insights"></ul>
+    </aside>
+  </div>
+</main>
+<div class="tooltip" id="tt"></div>
+<script src="../lib/d3.min.js"></script>
+<script src="../lib/d3-sankey.min.js"></script>
+<script>
+const FAM = {
+  "Eólica": "renovable", "Solar": "renovable", "Hidráulica": "renovable", "Biomasa, biogás y residuos": "renovable",
+  "Nuclear": "nuclear", "Gas natural": "fosil", "Petróleo (islas)": "fosil", "Carbón": "fosil", "Otras (bombeo y resto)": "otra",
+  "Electricidad": "electricidad", "Petróleo y derivados": "fosil", "Gas natural (uso directo)": "fosil",
+  "Renovables directas y biocarburantes": "renovable", "Carbón, residuos y calor": "fosil"
+};
+const FAM_LABEL = { renovable: "Renovable", fosil: "Fósil", nuclear: "Nuclear", electricidad: "Electricidad (mix)", otra: "Otras / sector de destino" };
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const famColor = f => ({ renovable: css("--aqua"), fosil: css("--orange"), nuclear: css("--violet"), electricidad: css("--blue") }[f] || css("--neutral"));
+const fmt = d3.format(",.1f"), pct = d3.format(".1%");
+const fmtES = v => fmt(v).replace(/,/g, "X").replace(/\./g, ",").replace(/X/g, ".");
+const pctES = v => pct(v).replace(".", ",");
+const tt = d3.select("#tt");
+let current = "all";
+
+d3.json("flujos_energia_espana_2024.json").then(data => {
+  const W = 980, H = 600, M = { t: 34, r: 250, b: 10, l: 170 };
+  const sankey = d3.sankey()
+    .nodeWidth(14).nodePadding(16)
+    .nodeAlign(n => n.col)
+    .nodeSort(null)
+    .extent([[M.l, M.t], [W - M.r, H - M.b]]);
+  const graph = sankey({ nodes: data.nodes.map(d => ({ ...d })), links: data.links.map(d => ({ ...d })) });
+  graph.nodes.forEach(n => n.fam = n.grupo === "sector" || n.grupo === "perdidas" ? "otra" : FAM[n.name]);
+
+  const totalElec = graph.nodes.find(n => n.name === "Electricidad").value;
+  const finalTot = d3.sum(graph.nodes.filter(n => n.grupo === "sector"), n => n.value);
+
+  const svg = d3.select("#chart").append("svg").attr("viewBox", [0, 0, W, H]).attr("role", "img")
+    .attr("aria-label", "Diagrama de Sankey de los flujos de energía en España en 2024");
+  const heads = [["Electricidad generada por fuente", M.l - 8, "end"], ["Vector energético", (M.l + W - M.r) / 2, "middle"], ["Consumo final por sector", W - M.r + 22, "start"]];
+  svg.append("g").selectAll("text").data(heads).join("text").attr("class", "colhead")
+    .attr("x", d => d[1]).attr("y", 14).attr("text-anchor", d => d[2]).text(d => d[0]);
+
+  const link = svg.append("g").selectAll("path").data(graph.links).join("path")
+    .attr("class", "link").attr("d", d3.sankeyLinkHorizontal())
+    .attr("stroke", d => famColor(d.source.fam)).attr("stroke-width", d => Math.max(1, d.width))
+    .on("mousemove", (e, d) => show(e, `<b>${d.source.name} → ${d.target.name}</b><br>${fmtES(d.value)} TWh<br><span class="k">${pctES(d.value / d.source.value)} de “${d.source.name}”</span>`))
+    .on("mouseleave", hide);
+
+  const node = svg.append("g").selectAll("g").data(graph.nodes).join("g").attr("class", "node");
+  node.append("rect").attr("x", d => d.x0).attr("y", d => d.y0).attr("height", d => Math.max(1, d.y1 - d.y0))
+    .attr("width", d => d.x1 - d.x0).attr("rx", 2).attr("fill", d => famColor(d.fam))
+    .on("mousemove", (e, d) => {
+      const base = d.grupo === "fuente" ? `${pctES(d.value / totalElec)} de la electricidad generada`
+        : d.grupo === "sector" ? `${pctES(d.value / finalTot)} del consumo final`
+        : d.grupo === "perdidas" ? `${pctES(d.value / totalElec)} de la electricidad generada`
+        : `${pctES(d.name === "Electricidad" ? (totalElec - graph.nodes.find(n => n.grupo === "perdidas").value) / finalTot : d.value / finalTot)} del consumo final`;
+      show(e, `<b>${d.name}</b><br>${fmtES(d.value)} TWh<br><span class="k">${base}</span>`);
+      link.classed("dim", l => l.source !== d && l.target !== d).classed("hi", l => l.source === d || l.target === d);
+    })
+    .on("mouseleave", () => { hide(); applyFilter(current); });
+
+  const lbl = node.append("text").attr("class", "lbl")
+    .attr("x", d => d.col === 0 ? d.x0 - 8 : d.x1 + 8)
+    .attr("y", d => (d.y0 + d.y1) / 2).attr("dy", "0.35em")
+    .attr("text-anchor", d => d.col === 0 ? "end" : "start");
+  lbl.append("tspan").attr("font-weight", 600).text(d => d.name.replace(" (uso directo)", "").replace(" y biocarburantes", ""));
+  lbl.append("tspan").attr("class", "v").text(d => `  ${fmtES(d.value)}`);
+
+  // Leyenda
+  d3.select("#legend").selectAll("span").data(["renovable", "fosil", "nuclear", "electricidad", "otra"]).join("span")
+    .html(f => `<span class="sw" style="background:${famColor(f)}"></span>${FAM_LABEL[f]}`);
+
+  // Filtro por familia
+  function applyFilter(f) {
+    current = f;
+    if (f === "all") { link.classed("dim", false).classed("hi", false); node.classed("dim", false); return; }
+    link.classed("dim", l => l.source.fam !== f).classed("hi", l => l.source.fam === f);
+    node.classed("dim", n => !(n.fam === f || n.grupo === "sector" || n.name === "Electricidad" || n.grupo === "perdidas"));
+  }
+  d3.selectAll(".seg button").on("click", function () {
+    d3.selectAll(".seg button").attr("aria-pressed", "false"); d3.select(this).attr("aria-pressed", "true");
+    applyFilter(this.dataset.f);
+  });
+
+  // Insights calculados a partir de los datos
+  const byFam = f => d3.sum(graph.nodes.filter(n => n.grupo === "fuente" && n.fam === f), n => n.value);
+  const v = name => graph.nodes.find(n => n.name === name).value;
+  const transp = graph.nodes.find(n => n.name === "Transporte");
+  const transpOil = transp.targetLinks.find(l => l.source.name === "Petróleo y derivados").value;
+  const elecFinal = totalElec - v("Pérdidas, autoconsumo y exportación neta");
+  d3.select("#insights").html(`
+    <li><strong>${pctES(byFam("renovable") / totalElec)}</strong> de la electricidad generada en 2024 fue renovable (eólica y solar a la cabeza); la nuclear aportó ${pctES(byFam("nuclear") / totalElec)}.</li>
+    <li>Pero la electricidad solo cubre <strong>${pctES(elecFinal / finalTot)}</strong> del consumo final. El vector dominante sigue siendo el <strong>petróleo (${pctES(v("Petróleo y derivados") / finalTot)})</strong>.</li>
+    <li>El <strong>transporte</strong> es el mayor consumidor (${pctES(transp.value / finalTot)}) y depende del petróleo en un <strong>${pctES(transpOil / transp.value)}</strong>.</li>
+    <li>${fmtES(v("Pérdidas, autoconsumo y exportación neta"))} TWh de la electricidad generada no llegan al consumo final: pérdidas de red, autoconsumo de centrales y exportación neta.</li>
+    <li><strong>Lectura:</strong> la descarbonización eléctrica avanza; el reto es electrificar transporte e industria.</li>`);
+
+  // Tabla accesible
+  const rows = graph.links.map(l => [l.source.name, l.target.name, l.value]);
+  d3.select("#tabla").html(`<table><thead><tr><th>Origen</th><th>Destino</th><th>TWh</th></tr></thead><tbody>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="n">${fmtES(r[2])}</td></tr>`).join("")}</tbody></table>`);
+});
+
+function show(e, html) {
+  tt.html(html).style("opacity", 1);
+  const w = tt.node().offsetWidth, h = tt.node().offsetHeight;
+  let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+  if (y + h > innerHeight - 8) y = e.clientY - h - 14;
+  tt.style("left", x + "px").style("top", y + "px");
+}
+function hide() { tt.style("opacity", 0); }
+</script>
+</body>
+</html>

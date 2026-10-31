@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voronoi · Bicing Barcelona</title>
+<meta name="description" content="Diagrama de Voronoi del área de influencia de cada estación de Bicing en Barcelona. Datos abiertos de Bicing y CartoBCN.">
+<link rel="stylesheet" href="../lib/estilo.css">
+<style>
+  .cell { stroke: var(--surface); stroke-width: .6; }
+  .cell:hover { stroke: var(--ink); stroke-width: 1.6; }
+  .district { fill: none; stroke: var(--ink); stroke-opacity: .55; stroke-width: 1.1; pointer-events: none; }
+  .city { fill: none; stroke: var(--ink); stroke-width: 1.6; pointer-events: none; }
+  .station { fill: var(--ink); pointer-events: none; }
+  .delaunay { fill: none; stroke: var(--accent); stroke-width: .6; stroke-opacity: .8; pointer-events: none; }
+  .dlabel { font-size: 11px; font-weight: 600; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3.5px; pointer-events: none; }
+  .scale { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-2); flex-wrap: wrap; margin: 4px 0 10px; }
+  .scale .bar { display: flex; }
+  .scale .bar span { width: 46px; height: 10px; }
+  .scale .ticks { display: flex; margin-left: 0; }
+  .scale .ticks span { width: 46px; font-size: 11px; color: var(--muted); text-align: left; transform: translateX(-4px); }
+  .drow { display: grid; grid-template-columns: 128px 1fr 54px; gap: 6px; align-items: center; font-size: 13px; color: var(--ink-2); margin: 3px 0; }
+  .drow .b { height: 8px; border-radius: 0 4px 4px 0; background: var(--blue); }
+  .drow .n { text-align: right; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <a href="../">← PEC 2 · Visualización de datos</a>
+    <a href="https://github.com/Crzek/uoc-pec2-visualizacion/tree/main/voronoi">Código y datos</a>
+  </header>
+  <p class="eyebrow">Técnica 2 · Diagrama de Voronoi</p>
+  <h1>¿Qué zona de Barcelona “cubre” cada estación de Bicing?</h1>
+  <p class="lede">Cada celda contiene todos los puntos de la ciudad que tienen esa estación como la más cercana (distancia en línea recta). Cuanto <strong>más oscura y grande</strong> es la celda, más territorio debe cubrir la estación y más lejos queda para quien vive allí.</p>
+
+  <div class="grid2">
+    <section class="card">
+      <div class="controls">
+        <label class="chk"><input type="checkbox" id="chkSt" checked> Estaciones</label>
+        <label class="chk"><input type="checkbox" id="chkDist" checked> Límites de distrito</label>
+        <label class="chk"><input type="checkbox" id="chkDel"> Triangulación de Delaunay (estructura dual)</label>
+      </div>
+      <div class="scale"><span>Área de la celda (km²):</span>
+        <div><div class="bar" id="sbar"></div><div class="ticks" id="sticks"></div></div>
+      </div>
+      <div class="chart" id="chart"></div>
+      <details class="tabla"><summary>Ver las 20 celdas más grandes en tabla</summary><div id="tabla"></div></details>
+      <p class="source">Fuentes: estaciones de <a href="https://www.bicing.barcelona/">Bicing</a> (feed público GBFS de BSM, consultado vía <a href="https://api.citybik.es/v2/networks/bicing">CityBikes API</a> el 31/10/2026; se excluyen 4 estaciones sin anclajes operativos). Límites de distrito: <a href="https://opendata-ajuntament.barcelona.cat/">Ajuntament de Barcelona / CartoBCN</a> (CC-BY). Celdas recortadas al término municipal. Elaboración: Erick (UOC).</p>
+    </section>
+    <aside class="card insights">
+      <h2>Qué muestra</h2>
+      <ul id="insights"></ul>
+      <h2 style="margin-top:14px">Área mediana de celda por distrito (km²)</h2>
+      <div id="dists"></div>
+    </aside>
+  </div>
+</main>
+<div class="tooltip" id="tt"></div>
+<script src="../lib/d3.min.js"></script>
+<script>
+const tt = d3.select("#tt");
+const nf = (v, d = 2) => v.toFixed(d).replace(".", ",");
+Promise.all([d3.json("districtes_bcn.geojson"), d3.csv("estaciones_bicing.csv", d3.autoType)]).then(([geo, st]) => {
+  const W = 900, H = 760;
+  const proj = d3.geoMercator().fitExtent([[10, 10], [W - 10, H - 10]], geo);
+  const path = d3.geoPath(proj);
+  st.forEach(d => { [d.x, d.y] = proj([d.lon, d.lat]); });
+
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const steps = [0.05, 0.08, 0.12, 0.18, 0.3, 0.6];
+  const colors = () => [1, 2, 3, 4, 5, 6, 7].map(i => css(`--seq-${i}`));
+  const color = d3.scaleThreshold().domain(steps);
+
+  const svg = d3.select("#chart").append("svg").attr("viewBox", [0, 0, W, H]).attr("role", "img")
+    .attr("aria-label", "Mapa de Voronoi de las estaciones de Bicing en Barcelona");
+  svg.append("clipPath").attr("id", "clipCity").selectAll("path").data(geo.features).join("path").attr("d", path);
+
+  const delaunay = d3.Delaunay.from(st, d => d.x, d => d.y);
+  const voronoi = delaunay.voronoi([0, 0, W, H]);
+
+  const gCells = svg.append("g").attr("clip-path", "url(#clipCity)");
+  const cells = gCells.selectAll("path").data(st).join("path").attr("class", "cell")
+    .attr("d", (d, i) => voronoi.renderCell(i))
+    .on("mousemove", (e, d) => {
+      tt.html(`<b>${d.nombre}</b><br><span class="k">${d.distrito}</span><br>Área de influencia: <b>${nf(d.area_km2, 3)} km²</b><br>Radio equivalente: ${Math.round(Math.sqrt(d.area_km2 / Math.PI) * 1000)} m<br>Anclajes: ${d.capacidad}`).style("opacity", 1);
+      const w = tt.node().offsetWidth; let x = e.clientX + 14; if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+      tt.style("left", x + "px").style("top", (e.clientY + 14) + "px");
+    })
+    .on("mouseleave", () => tt.style("opacity", 0));
+
+  const gDel = svg.append("path").attr("class", "delaunay").attr("clip-path", "url(#clipCity)").attr("d", delaunay.render()).style("display", "none");
+  const gDist = svg.append("g").selectAll("path").data(geo.features).join("path").attr("class", "district").attr("d", path);
+  const gSt = svg.append("g").selectAll("circle").data(st).join("circle").attr("class", "station")
+    .attr("cx", d => d.x).attr("cy", d => d.y).attr("r", 1.6);
+  const gLab = svg.append("g").selectAll("text").data(geo.features).join("text").attr("class", "dlabel")
+    .attr("transform", d => `translate(${path.centroid(d)})`).attr("text-anchor", "middle").text(d => d.properties.nom);
+
+  function paint() {
+    const c = colors(); color.range(c);
+    cells.attr("fill", d => color(d.area_km2));
+    d3.select("#sbar").selectAll("span").data(c).join("span").style("background", d => d);
+    d3.select("#sticks").selectAll("span").data(["", ...steps.map(s => nf(s))]).join("span").text(d => d);
+  }
+  paint();
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint);
+
+  d3.select("#chkDel").on("change", function () { gDel.style("display", this.checked ? null : "none"); });
+  d3.select("#chkSt").on("change", function () { gSt.style("display", this.checked ? null : "none"); });
+  d3.select("#chkDist").on("change", function () { gDist.style("display", this.checked ? null : "none"); gLab.style("display", this.checked ? null : "none"); });
+
+  // Estadísticos
+  const byD = d3.rollups(st, v => ({ med: d3.median(v, d => d.area_km2), n: v.length }), d => d.distrito)
+    .sort((a, b) => a[1].med - b[1].med);
+  const maxMed = d3.max(byD, d => d[1].med);
+  d3.select("#dists").selectAll("div").data(byD).join("div").attr("class", "drow")
+    .html(d => `<span>${d[0]} <span style="color:var(--muted)">(${d[1].n})</span></span><div class="b" style="width:${100 * d[1].med / maxMed}%"></div><span class="n">${nf(d[1].med, 3)}</span>`);
+
+  const area = d3.sum(st, d => d.area_km2), med = d3.median(st, d => d.area_km2);
+  const big = st.slice().sort((a, b) => b.area_km2 - a.area_km2);
+  const first = byD[0], last = byD[byD.length - 1];
+  d3.select("#insights").html(`
+    <li><strong>${st.length} estaciones</strong> se reparten ${nf(area, 1)} km²: la celda mediana mide <strong>${nf(med, 3)} km²</strong> (radio equivalente ≈ ${Math.round(Math.sqrt(med / Math.PI) * 1000)} m).</li>
+    <li>En <strong>${first[0]}</strong> la celda mediana es de ${nf(first[1].med, 3)} km²; en <strong>${last[0]}</strong>, de ${nf(last[1].med, 3)} km²: <strong>${nf(last[1].med / first[1].med, 1)} veces</strong> más territorio por estación.</li>
+    <li>Las celdas más grandes están en el borde: Collserola, Montjuïc y la Zona Franca. Son zonas de poca población o industriales, donde el área es grande pero la demanda es baja.</li>
+    <li>Activa la <strong>triangulación de Delaunay</strong> para ver la estructura dual: cada lado de una celda es la mediatriz entre dos estaciones vecinas.</li>`);
+
+  d3.select("#tabla").html(`<table><thead><tr><th>Estación</th><th>Distrito</th><th>km²</th></tr></thead><tbody>${big.slice(0, 20).map(d => `<tr><td>${d.nombre}</td><td>${d.distrito}</td><td class="n">${nf(d.area_km2, 3)}</td></tr>`).join("")}</tbody></table>`);
+});
+</script>
+</body>
+</html>

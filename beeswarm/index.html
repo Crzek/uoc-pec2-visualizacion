@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beeswarm · Esperanza de vida 2023</title>
+<meta name="description" content="Beeswarm plot de la esperanza de vida al nacer en 217 países y territorios (2023), agrupados por región del Banco Mundial y coloreados por nivel de renta.">
+<link rel="stylesheet" href="../lib/estilo.css">
+<style>
+  :root { --inc-1: #86b6ef; --inc-2: #3987e5; --inc-3: #1c5cab; --inc-4: #0d366b; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --inc-1: #184f95; --inc-2: #2a78d6; --inc-3: #6da7ec; --inc-4: #cde2fb; } }
+  :root[data-theme="dark"] { --inc-1: #184f95; --inc-2: #2a78d6; --inc-3: #6da7ec; --inc-4: #cde2fb; }
+  .dot { stroke: var(--surface); stroke-width: 1; }
+  .dot:hover { stroke: var(--ink); stroke-width: 1.6; }
+  .dot.esp { stroke: var(--accent); stroke-width: 2.4; }
+  .rowlbl { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .rowsub { font-size: 11.5px; fill: var(--muted); }
+  .med { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+  .medlbl { font-size: 11px; fill: var(--ink-2); }
+  .ann { font-size: 11.5px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3.5px; }
+  .annline { stroke: var(--muted); stroke-width: 1; }
+  .rowsep { stroke: var(--grid); }
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <a href="../">← PEC 2 · Visualización de datos</a>
+    <a href="https://github.com/Crzek/uoc-pec2-visualizacion/tree/main/beeswarm">Código y datos</a>
+  </header>
+  <p class="eyebrow">Técnica 3 · Beeswarm plot</p>
+  <h1>¿Cuántos años se vive en cada rincón del mundo?</h1>
+  <p class="lede">Esperanza de vida al nacer en 2023. Cada punto es un país o territorio (217 en total), situado en el eje horizontal según su valor. Los puntos se desplazan verticalmente lo justo para no solaparse, así se ve <strong>cada dato individual y la forma de la distribución</strong> a la vez.</p>
+
+  <div class="grid2">
+    <section class="card">
+      <div class="controls">
+        <div class="seg" role="group" aria-label="Agrupación">
+          <button data-g="region" aria-pressed="true">Por región</button>
+          <button data-g="todos" aria-pressed="false">Todos juntos</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="chkPop"> Tamaño según población</label>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="chart" id="chart"></div>
+      <details class="tabla"><summary>Ver los datos en tabla</summary><div id="tabla"></div></details>
+      <p class="source">Fuente: <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN">Banco Mundial, indicador SP.DYN.LE00.IN</a> (esperanza de vida al nacer, total, años), 2023; población SP.POP.TOTL; regiones y niveles de renta según la clasificación del Banco Mundial. Consultado el 31/10/2026. Elaboración: Erick (UOC).</p>
+    </section>
+    <aside class="card insights">
+      <h2>Qué muestra</h2>
+      <ul id="insights"></ul>
+    </aside>
+  </div>
+</main>
+<div class="tooltip" id="tt"></div>
+<script src="../lib/d3.min.js"></script>
+<script>
+const REG = {
+  "Sub-Saharan Africa": "África subsahariana",
+  "South Asia": "Asia meridional",
+  "Middle East, North Africa, Afghanistan & Pakistan": "Oriente Medio y N. de África",
+  "Latin America & Caribbean": "América Latina y Caribe",
+  "East Asia & Pacific": "Asia oriental y Pacífico",
+  "Europe & Central Asia": "Europa y Asia central",
+  "North America": "Norteamérica"
+};
+const INC = ["Low income", "Lower middle income", "Upper middle income", "High income"];
+const INC_ES = { "Low income": "Renta baja", "Lower middle income": "Renta media-baja", "Upper middle income": "Renta media-alta", "High income": "Renta alta" };
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const incColor = r => css(`--inc-${INC.indexOf(r) + 1}`);
+const nf = (v, d = 1) => v.toFixed(d).replace(".", ",");
+const tt = d3.select("#tt");
+
+d3.csv("esperanza_vida_2023.csv", d3.autoType).then(data => {
+  data.forEach(d => d.region = REG[d.region_bm]);
+  const regions = d3.groups(data, d => d.region).map(([k, v]) => ({ k, med: d3.median(v, d => d.esperanza_vida), n: v.length }))
+    .sort((a, b) => a.med - b.med);
+  const W = 980, M = { t: 30, r: 24, b: 40, l: 200 };
+  const rowH = 96, H = M.t + regions.length * rowH + M.b;
+  const x = d3.scaleLinear().domain([52, 88]).range([M.l, W - M.r]);
+  const r = d3.scaleSqrt().domain([0, d3.max(data, d => d.poblacion)]).range([0, 26]);
+  const yRow = d3.scalePoint().domain(regions.map(d => d.k)).range([M.t + rowH / 2, H - M.b - rowH / 2]);
+
+  const svg = d3.select("#chart").append("svg").attr("viewBox", [0, 0, W, H]).attr("role", "img")
+    .attr("aria-label", "Beeswarm de la esperanza de vida por país en 2023");
+  const gGrid = svg.append("g").attr("class", "gridline");
+  gGrid.selectAll("line").data(x.ticks(9)).join("line").attr("x1", d => x(d)).attr("x2", d => x(d)).attr("y1", M.t - 6).attr("y2", H - M.b);
+  svg.append("g").attr("class", "axis").attr("transform", `translate(0,${H - M.b})`)
+    .call(d3.axisBottom(x).ticks(9).tickSize(4).tickFormat(d => d + " años")).call(g => g.select(".domain").remove());
+  const gRows = svg.append("g");
+  const gMed = svg.append("g");
+  const gDots = svg.append("g");
+  const gAnn = svg.append("g");
+
+  const dots = gDots.selectAll("circle").data(data).join("circle")
+    .attr("class", d => "dot" + (d.iso3 === "ESP" ? " esp" : "")).attr("fill", d => incColor(d.renta))
+    .attr("cx", d => x(d.esperanza_vida)).attr("cy", H / 2).attr("r", 4.6)
+    .on("mousemove", (e, d) => {
+      tt.html(`<b>${d.pais}</b><br><span class="k">${d.region} · ${INC_ES[d.renta]}</span><br>Esperanza de vida: <b>${nf(d.esperanza_vida)} años</b><br>Población: ${d3.format(",")(d.poblacion).replace(/,/g, ".")}`).style("opacity", 1);
+      const w = tt.node().offsetWidth; let xx = e.clientX + 14; if (xx + w > innerWidth - 8) xx = e.clientX - w - 14;
+      tt.style("left", xx + "px").style("top", (e.clientY + 14) + "px");
+    }).on("mouseleave", () => tt.style("opacity", 0));
+
+  let mode = "region", popSize = false;
+  function layout() {
+    const rad = d => popSize ? Math.max(2.4, r(d.poblacion)) : 4.6;
+    const cy = d => mode === "region" ? yRow(d.region) : (M.t + H - M.b) / 2;
+    const nodes = data.map(d => ({ d, x: x(d.esperanza_vida), y: cy(d), r: rad(d) }));
+    const sim = d3.forceSimulation(nodes)
+      .force("x", d3.forceX(n => x(n.d.esperanza_vida)).strength(1))
+      .force("y", d3.forceY(n => cy(n.d)).strength(mode === "region" ? 0.12 : 0.05))
+      .force("c", d3.forceCollide(n => n.r + 0.7).iterations(3)).stop();
+    for (let i = 0; i < 260; i++) sim.tick();
+    nodes.forEach(n => { n.d._x = n.x; n.d._y = n.y; n.d._r = n.r; });
+    dots.sort((a, b) => b._r - a._r).transition().duration(700)
+      .attr("cx", d => d._x).attr("cy", d => d._y).attr("r", d => d._r);
+
+    // Etiquetas de fila y medianas
+    const rows = mode === "region" ? regions : [{ k: "Todos los países", med: d3.median(data, d => d.esperanza_vida), n: data.length }];
+    const ry = k => mode === "region" ? yRow(k) : (M.t + H - M.b) / 2;
+    gRows.selectAll("g").data(rows, d => d.k).join(
+      en => { const g = en.append("g"); g.append("text").attr("class", "rowlbl"); g.append("text").attr("class", "rowsub"); g.append("line").attr("class", "rowsep"); return g; })
+      .call(g => g.select(".rowlbl").attr("x", 12).attr("y", d => ry(d.k) - 4).text(d => d.k))
+      .call(g => g.select(".rowsub").attr("x", 12).attr("y", d => ry(d.k) + 13).text(d => `${d.n} países · mediana ${nf(d.med)}`))
+      .call(g => g.select(".rowsep").attr("x1", 12).attr("x2", W - M.r).attr("y1", d => ry(d.k) + rowH / 2).attr("y2", d => ry(d.k) + rowH / 2)
+        .style("display", (d, i) => mode === "region" && i < rows.length - 1 ? null : "none"));
+    gMed.selectAll("line").data(rows, d => d.k).join("line").attr("class", "med")
+      .attr("x1", d => x(d.med)).attr("x2", d => x(d.med)).attr("y1", d => ry(d.k) - 30).attr("y2", d => ry(d.k) + 30)
+      .attr("stroke-opacity", 0.0).transition().delay(500).attr("stroke-opacity", 0.55);
+
+    // Anotaciones
+    const pick = ["ESP", "MCO", "NGA", "TCD", "USA", "IND", "CHN"];
+    const ann = data.filter(d => pick.includes(d.iso3));
+    setTimeout(() => {
+      gAnn.selectAll("g").data(ann, d => d.iso3).join(en => { const g = en.append("g"); g.append("line").attr("class", "annline"); g.append("text").attr("class", "ann"); return g; })
+        .call(g => g.select("line").attr("x1", d => d._x).attr("x2", d => d._x).attr("y1", d => d._y - d._r - 1).attr("y2", d => d._y - d._r - 12))
+        .call(g => g.select("text").attr("x", d => d._x).attr("y", d => d._y - d._r - 15).attr("text-anchor", "middle")
+          .attr("font-weight", d => d.iso3 === "ESP" ? 700 : 400)
+          .text(d => ({ ESP: "España", MCO: "Mónaco", NGA: "Nigeria", TCD: "Chad", USA: "EE. UU.", IND: "India", CHN: "China" }[d.iso3]) + " " + nf(d.esperanza_vida)));
+    }, 720);
+  }
+  layout();
+
+  d3.selectAll(".seg button").on("click", function () {
+    d3.selectAll(".seg button").attr("aria-pressed", "false"); d3.select(this).attr("aria-pressed", "true");
+    mode = this.dataset.g; layout();
+  });
+  d3.select("#chkPop").on("change", function () { popSize = this.checked; layout(); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { dots.attr("fill", d => incColor(d.renta)); legend(); });
+
+  function legend() {
+    d3.select("#legend").selectAll("span.it").data(INC).join("span").attr("class", "it")
+      .html(k => `<span class="sw" style="background:${incColor(k)};border-radius:50%"></span>${INC_ES[k]}`);
+    d3.select("#legend").selectAll("span.esp").data([1]).join("span").attr("class", "esp")
+      .html(`<span class="sw" style="border:2.4px solid ${css("--accent")};border-radius:50%"></span>España`);
+    d3.select("#legend").selectAll("span.med").data([1]).join("span").attr("class", "med")
+      .html(`<span class="sw" style="width:2px;height:14px;background:var(--ink);opacity:.55;border-radius:0"></span>Mediana del grupo`);
+  }
+  legend();
+
+  // Insights
+  const sorted = data.slice().sort((a, b) => b.esperanza_vida - a.esperanza_vida);
+  const esp = data.find(d => d.iso3 === "ESP"), espRank = sorted.indexOf(esp) + 1;
+  const ssa = data.filter(d => d.region === "África subsahariana");
+  const ssaAbove75 = ssa.filter(d => d.esperanza_vida >= 75);
+  const byInc = INC.map(k => d3.median(data.filter(d => d.renta === k), d => d.esperanza_vida));
+  d3.select("#insights").html(`
+    <li>Entre <strong>${sorted[sorted.length - 1].pais} (${nf(sorted[sorted.length - 1].esperanza_vida)})</strong> y <strong>${sorted[0].pais} (${nf(sorted[0].esperanza_vida)})</strong> hay ${nf(sorted[0].esperanza_vida - sorted[sorted.length - 1].esperanza_vida)} años de diferencia.</li>
+    <li><strong>España: ${nf(esp.esperanza_vida)} años</strong>, puesto ${espRank} de ${data.length}, en la cola derecha de Europa.</li>
+    <li>África subsahariana es la región más baja y compacta: solo ${ssaAbove75.length} de ${ssa.length} países superan los 75 años (${ssaAbove75.map(d => d.pais).join(", ")}).</li>
+    <li>Europa y Asia central es la más dispersa: va de ${nf(d3.min(data.filter(d => d.region === "Europa y Asia central"), d => d.esperanza_vida))} a ${nf(d3.max(data.filter(d => d.region === "Europa y Asia central"), d => d.esperanza_vida))} años. Una media lo ocultaría.</li>
+    <li>El color revela el gradiente de renta: medianas de ${byInc.map(nf).join(" → ")} años de renta baja a alta.</li>`);
+
+  d3.select("#tabla").html(`<table><thead><tr><th>#</th><th>País</th><th>Región</th><th>Renta</th><th>Años</th></tr></thead><tbody>${sorted.map((d, i) => `<tr><td class="n">${i + 1}</td><td>${d.pais}</td><td>${d.region}</td><td>${INC_ES[d.renta]}</td><td class="n">${nf(d.esperanza_vida)}</td></tr>`).join("")}</tbody></table>`);
+});
+</script>
+</body>
+</html>

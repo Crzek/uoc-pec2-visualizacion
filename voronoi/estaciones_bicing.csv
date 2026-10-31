@@ -1,0 +1,514 @@
+id,nombre,distrito,lat,lon,capacidad,area_km2
+106,Pl Joanic - C / Bruniquer 59,Gràcia,41.40552,2.16225,7,0.0803
+119,C/ Sardenya 178,Eixample,41.39672,2.18251,37,0.0754
+225,C/ Viladomat 200,Eixample,41.38481,2.15081,20,0.065
+165,C/ Del Doctor Trueta 222,Sant Martí,41.39922,2.20414,22,0.1198
+244,C/ Felip Ii 214,Sant Andreu,41.42692,2.17862,26,0.1448
+167,C/ Bac De Roda 11,Sant Martí,41.40234,2.21058,19,0.0705
+8,Pg. Pujades 2,Ciutat Vella,41.38914,2.18349,26,0.1055
+50,Av. Paral.Lel 54,Ciutat Vella,41.37511,2.17094,18,0.077
+85,Av. Paral·Lel 146 Bis,Eixample,41.37519,2.15924,34,0.0756
+261,C/ Villarroel 39,Eixample,41.38213,2.16065,30,0.0516
+28,C/ Sardenya 362,Eixample,41.40551,2.17065,16,0.0817
+517,Av. Rasos De Peguera 10,Nou Barris,41.46209,2.17896,15,1.7144
+257,C/ Sant Adrià 2-8,Sant Andreu,41.43393,2.18965,22,0.1342
+151,C/ Pallars 182,Sant Martí,41.40035,2.19691,26,0.0572
+492,Pl. Tetuan,Eixample,41.39435,2.17517,22,0.0485
+90,C/ Rosselló 108-110,Eixample,41.3883,2.15088,16,0.0934
+218,C/ Consell De Cent 566,Eixample,41.40404,2.18315,39,0.0758
+595,C/ Bruc 88,Eixample,41.39458,2.16929,16,0.0394
+231,C/ Pau Alsina 54,Gràcia,41.4092,2.164,18,0.1242
+505,C/ Camèlies 78,Horta-Guinardó,41.41456,2.16587,22,0.3233
+362,C/ Bailén 100,Eixample,41.39699,2.17063,27,0.112
+305,Av. Diagonal 680,Les Corts,41.38753,2.12371,27,0.0935
+57,La Rambla 1,Ciutat Vella,41.37633,2.17697,33,0.0493
+325,C/ Alt De Gironella 13,Sarrià-Sant Gervasi,41.39496,2.13028,18,0.1148
+280,C/ Sant Antoni Mª Claret 290-296,Horta-Guinardó,41.41387,2.17773,25,0.1123
+203,Av. Diagonal 668,Les Corts,41.38871,2.12858,31,0.064
+472,Via Favència 186,Nou Barris,41.44274,2.17039,24,0.3906
+101,Av. Diagonal 602,Sarrià-Sant Gervasi,41.39288,2.14341,20,0.0634
+433,C/ J. Maynard Keynes 2|Av. Dgnal.,Les Corts,41.38623,2.11686,51,0.0992
+411,C/ Josep Pla 67,Sant Martí,41.41138,2.21221,21,0.134
+17,Av. Meridiana 47 (D),Eixample,41.39826,2.18665,40,0.0633
+166,C/ Bilbao 2,Sant Martí,41.40083,2.20664,24,0.0696
+343,Campana De La Maquinista (Sao Paulo I Pl. De,Sant Andreu,41.43896,2.19962,23,0.1669
+22,C/ Sardenya 292,Eixample,41.4017,2.17577,16,0.1177
+494,Rbla. Catalunya 33 - C/ Diputació,Eixample,41.3897,2.16522,17,0.1455
+49,C/ Rosa Sensat 20,Sant Martí,41.39108,2.19658,20,0.0868
+209,C/ Diputació 200,Eixample,41.38574,2.16105,22,0.0937
+149,C/ Pujades 57B,Sant Martí,41.39587,2.19295,17,0.1274
+365,C/ Viladomat 244,Eixample,41.38757,2.14693,28,0.0982
+387,C/ Nàpols 125,Eixample,41.39578,2.17871,29,0.0603
+480,Pg. Fabra I Puig 385,Horta-Guinardó,41.43333,2.16293,26,0.1528
+506,C/ Garriga I Roca 2,Horta-Guinardó,41.4192,2.17185,11,0.3478
+295,C/ Sant Iscle 60,Nou Barris,41.43338,2.17163,26,0.159
+259,C/ De Bartrina 14,Sant Andreu,41.43912,2.1858,19,0.1239
+252,Rambla De L'Onze De Setembre 31,Sant Andreu,41.4299,2.19322,29,0.2621
+204,Av. Diagonal 672,Les Corts,41.38804,2.12562,33,0.0713
+97,C/ Tarragona 141,Sants-Montjuïc,41.37796,2.14505,15,0.0718
+75,Av. Josep Tarradellas 58,Eixample,41.385,2.14291,18,0.0757
+341,Carrer Caresmar Esq D`Enric Sanchís,Sant Andreu,41.43392,2.20622,25,0.1462
+443,C/ Casanova 139,Eixample,41.38871,2.15423,24,0.0704
+442,C/ Mineria 30,Sants-Montjuïc,41.36493,2.1386,17,0.103
+76,C/ Còrsega 216,Eixample,41.39177,2.15322,22,0.1091
+214,C/ José De Agulló 9,Sarrià-Sant Gervasi,41.3952,2.13349,21,0.0937
+403,C/ Vallespir 49,Sants-Montjuïc,41.37964,2.13682,20,0.0782
+189,C/ Bruc 130,Eixample,41.39698,2.16619,24,0.0371
+319,C/ Sagués 1,Sarrià-Sant Gervasi,41.39374,2.1455,26,0.0776
+464,Av. Rio De Janeiro 96,Nou Barris,41.43969,2.18234,20,0.1456
+429,C/ Gran Capità 9,Les Corts,41.38813,2.10915,25,1.4905
+202,C/ De Les Corts 20,Les Corts,41.38545,2.12888,24,0.1192
+142,C/ Sancho De Ávila 104 - C/ Badajoz,Sant Martí,41.40038,2.19241,46,0.0774
+143,C/ Sancho De Ávila 170 / Llacuna,Sant Martí,41.40279,2.19562,24,0.0616
+39,Pl. Pau Vila (D),Ciutat Vella,41.38105,2.18658,42,0.0651
+386,Av. Paral.Lel 164,Eixample,41.37519,2.15688,15,0.0753
+223,C/ De Bonavista 14,Gràcia,41.39834,2.15982,31,0.1031
+73,C/ Enric Granados 93,Eixample,41.39214,2.15635,24,0.0799
+513,Via Augusta 317,Sarrià-Sant Gervasi,41.39902,2.12433,21,0.1005
+120,C/ Lepant 278,Eixample,41.40471,2.17651,20,0.0753
+199,C/ Mejía Lequerica 2,Les Corts,41.38197,2.12686,26,0.1311
+173,Av.Litoral 84,Sant Martí,41.3979,2.20885,19,0.1145
+446,Pg. Joan De Borbó 42,Ciutat Vella,41.378,2.18842,13,0.0649
+1,Gran Via Corts Catalanes 760,Eixample,41.39798,2.18011,43,0.0755
+373,Av. Paral.Lel 132,Eixample,41.3751,2.16139,25,0.0568
+356,C/ Camèlies 73,Horta-Guinardó,41.41345,2.1631,31,0.3427
+107,Trav. De Gràcia 92 / Via Augusta,Sarrià-Sant Gervasi,41.39823,2.1531,16,0.1178
+378,Pl. Joaquim Xirau I Palau 1,Ciutat Vella,41.37854,2.17674,19,0.0915
+330,C/ Pau Alcover 94,Sarrià-Sant Gervasi,41.40188,2.13152,25,0.0859
+60,Rbla. Catalunya 47,Eixample,41.39026,2.16404,16,0.0666
+360,C/ Bailén 62,Eixample,41.39525,2.173,26,0.0674
+229,C/ De La Santacreu 2 (Pl. De La Virreina),Gràcia,41.4051,2.15692,19,0.1172
+153,C/ Pujades 173/Rbla Poble Nou,Sant Martí,41.40187,2.20077,19,0.0749
+228,Pl. Del Nord 5,Gràcia,41.40684,2.15584,15,0.0946
+471,Pg. Valldaura 171,Nou Barris,41.4389,2.17156,24,0.1363
+265,C/ Casanova 55,Eixample,41.38477,2.15926,18,0.0818
+235,Av. Paral.Lel 98,Eixample,41.37518,2.1659,18,0.0725
+290,Pl. Dels Jardins D'Alfàbia 1,Nou Barris,41.43734,2.1741,16,0.1009
+466,C/ Pablo Iglesias 21,Nou Barris,41.44339,2.18131,30,0.159
+291,C/ Cubelles 2,Nou Barris,41.42608,2.17516,20,0.095
+507,C/ Sardenya 498,Horta-Guinardó,41.41076,2.1641,22,0.0806
+281,C/ D'Escornalbou 51,Horta-Guinardó,41.41808,2.1764,22,0.105
+100,C/ Tarragona 159-173,Sants-Montjuïc,41.37936,2.14387,15,0.0818
+602,C/ Rosselló 497 (Xamfrà),Eixample,41.40811,2.17676,18,0.0504
+358,C/ Gombau 24,Ciutat Vella,41.38724,2.1793,21,0.3268
+196,C/ Berlín 38,Sants-Montjuïc,41.38326,2.13927,24,0.0813
+353,C/ Munné 2-6,Sants-Montjuïc,41.37541,2.12325,23,0.1299
+498,C/ Esteve Terradas 42,Gràcia,41.4145,2.14024,25,0.2097
+473,Pg. Fabra I Puig 449,Nou Barris,41.43886,2.16575,19,0.1523
+402,Pg. De Colom (Via Laietana),Ciutat Vella,41.38063,2.18219,27,0.0028
+95,C/ Tarragona 103-115,Sants-Montjuïc,41.37639,2.14733,29,0.065
+134,C/ Bac De Roda 157,Sant Martí,41.4113,2.19873,19,0.1012
+219,C/ Laforja 74-76,Sarrià-Sant Gervasi,41.39762,2.14717,23,0.0841
+368,C/ Diputació 373,Eixample,41.39684,2.17566,21,0.054
+152,C/ Pujades 121,Sant Martí,41.39933,2.19742,36,0.0477
+413,C/ Bruc 66,Eixample,41.39349,2.17074,28,0.0325
+608,C/ Pamplona 116 (Xamfrà),Sant Martí,41.39909,2.18839,22,0.0563
+511,C/ Gran De Gràcia 91,Gràcia,41.40069,2.15433,15,0.0801
+509,C/ Torrent De L'Olla 11,Gràcia,41.39897,2.16067,24,0.0869
+329,C/ De Les Escoles Pies 99,Sarrià-Sant Gervasi,41.403,2.12839,25,0.3743
+577,Ptge. Calafell 3,Horta-Guinardó,41.42377,2.15462,23,0.5127
+30,C/ Castillejos 180,Eixample,41.4028,2.18326,27,0.0755
+68,Rambla Catalunya 133 / Còrsega,Eixample,41.39539,2.1573,26,0.1435
+573,Av. Martí Codolar 2 | Coll I Alentorn,Horta-Guinardó,41.42499,2.1482,20,0.3721
+104,C/ València 621,Sant Martí,41.4108,2.18724,22,0.0986
+335,C/ Santa Amèlia 2,Sarrià-Sant Gervasi,41.39354,2.12312,27,0.1204
+35,C/ Sant Ramon De Penyafort 1,Sant Martí,41.41348,2.22069,46,0.0845
+160,Av. D'Eduard Maristany 1 /Forum,Sant Martí,41.41098,2.21937,29,0.3492
+37,Pg. De Colom - Via Laietana,Ciutat Vella,41.38062,2.18207,19,0.0845
+310,C/ Josep Samitier | Av. Joan Xxiii,Les Corts,41.38121,2.11909,22,0.1558
+170,Av. Litoral 40 (D),Sant Martí,41.38966,2.19996,49,0.0778
+393,C/ Llacuna 86,Sant Martí,41.40227,2.19763,29,0.0659
+512,C/ D'Alacant 12,Sarrià-Sant Gervasi,41.40008,2.13269,21,0.145
+487,C/ Lisboa 128,Horta-Guinardó,41.42676,2.15219,27,0.2059
+415,Rambla Del Raval 13,Ciutat Vella,41.37936,2.16896,16,0.0741
+233,C/ Nou De La Rambla 164,Sants-Montjuïc,41.37197,2.16678,25,0.2808
+296,C/ De Rosselló I Porcel 1 | Av. Meridiana,Nou Barris,41.43649,2.1841,27,0.0903
+114,Pl. Jean Genet 1,Ciutat Vella,41.37673,2.17401,17,0.054
+24,C/ Marina 199,Eixample,41.40058,2.17889,34,0.0862
+614,C/ Agricultura 116,Sant Martí,41.4123,2.20917,39,0.0675
+468,C/ Nou Barris 23,Nou Barris,41.44805,2.17752,17,1.0095
+144,C/ Castella 28 / Diagonal,Sant Martí,41.40563,2.19771,22,0.1394
+342,C/ Roc Boronat 134,Sant Martí,41.4035,2.19366,35,0.0612
+334,Pg. Bonanova 100,Sarrià-Sant Gervasi,41.40079,2.12289,21,2.4599
+449,C/ Bolivia 120,Sant Martí,41.40581,2.19495,24,0.0956
+18,C/ Rosselló 453,Eixample,41.40606,2.17405,25,0.059
+385,C/ Casanova 119,Eixample,41.38789,2.15529,27,0.0811
+322,C/ Santaló 165,Sarrià-Sant Gervasi,41.4009,2.13892,17,0.1877
+194,C/ Joan Güell 98,Les Corts,41.3812,2.13236,22,0.085
+404,C/ Juan Gris 28,Sants-Montjuïc,41.36534,2.13314,31,0.0488
+500,C/ Argentera 23,Gràcia,41.41176,2.14534,19,0.4583
+481,Pg. Fabra I Puig 411,Horta-Guinardó,41.4358,2.16387,27,0.1177
+563,C/ Entença 301,Les Corts,41.38952,2.13862,21,0.0931
+146,C/ Pere Iv 488,Sant Martí,41.4149,2.20719,21,0.1127
+382,C/ Lope De Vega 79,Sant Martí,41.40389,2.20411,27,0.0894
+451,C/ Pallars 504,Sant Martí,41.41406,2.21505,24,0.1349
+99,C/ Viriat 53,Sants-Montjuïc,41.38082,2.14154,18,0.0183
+488,Av. Can Marcet 36,Horta-Guinardó,41.43479,2.1479,24,1.1855
+441,C/ Watt 2,Sants-Montjuïc,41.37544,2.13984,17,0.1234
+298,C/ Andreu Nin 22,Nou Barris,41.43472,2.18177,29,0.1708
+48,Av. Meridiana 40,Sant Martí,41.39607,2.1872,16,0.1056
+122,C/ Nàpols 344,Gràcia,41.40545,2.16632,31,0.114
+135,Gran Via De Les Corts Catalanes 981,Sant Martí,41.41205,2.19727,16,0.1222
+150,C/ Espronceda 124,Sant Martí,41.40659,2.20303,23,0.1446
+54,C/ Sant Oleguer 2,Ciutat Vella,41.37753,2.17073,14,0.0496
+436,Pg. Zona Franca 54,Sants-Montjuïc,41.35454,2.1433,25,0.3922
+371,C/ Dels Enamorats 49,Eixample,41.40405,2.1812,31,0.0903
+74,Av. Josep Tarradellas 133,Les Corts,41.39001,2.14321,12,0.1185
+123,C/ Provença 317,Eixample,41.39882,2.16674,14,0.0836
+110,Av. Roma 136,Eixample,41.38526,2.15509,12,0.0576
+115,Av. Marqués De L'Argentera 3,Ciutat Vella,41.3836,2.18417,19,0.0615
+243,C/ Alexandre Galí 1-5,Sant Andreu,41.42397,2.18124,26,0.1119
+417,C/ Villar 2,Horta-Guinardó,41.41648,2.18011,30,0.0828
+497,Ptge. Maluquer 16,Sarrià-Sant Gervasi,41.40955,2.13603,22,0.1928
+230,C/ De Nil Fabra 16-20,Gràcia,41.40594,2.1518,18,0.1364
+447,C/ Almogàvers 63,Eixample,41.3943,2.18603,17,0.1002
+294,Seu Del Districte (Nou Barris),Nou Barris,41.43635,2.17068,24,0.07
+392,C/ Ramon Turró 4,Sant Martí,41.39053,2.19063,18,0.017
+88,C/ Londres 101-103,Eixample,41.39361,2.15077,13,0.1011
+147,Rambla Prim 79,Sant Martí,41.41604,2.2125,32,0.2155
+496,C/ Provença 445,Eixample,41.40486,2.1748,18,0.0348
+276,Plaça Alfons X El Savi / Ronda Del Guinardo,Horta-Guinardó,41.41213,2.16522,21,0.0857
+484,C/ Eduard Toda 33 | C/ Doctor Letamendi,Horta-Guinardó,41.4346,2.15853,23,0.1714
+84,C/ Del Comte D'Urgell 75 B,Eixample,41.38303,2.15716,23,0.0729
+19,C/ Rosselló 354,Eixample,41.40315,2.17079,24,0.0844
+130,Rambla De Guipúscoa 103 /Cantàbria,Sant Martí,41.42001,2.20167,21,0.1814
+201,C/ Numància 136,Les Corts,41.38781,2.13442,17,0.109
+514,C/ Aragó 614,Sant Martí,41.40951,2.18851,21,0.0715
+599,C/ València 312 (Xamfrà),Eixample,41.3951,2.16669,20,0.0347
+154,C/ Pujades 191,Sant Martí,41.40263,2.20177,28,0.0742
+566,C/ Cristóbal De Moura 163 (Xamfrà),Sant Martí,41.41351,2.20936,17,0.0741
+345,Pl. Teresa De Claramunt/C/ Dels Ferrocarils,Sants-Montjuïc,41.36311,2.13983,31,0.1423
+495,C/ Diputació 22,Eixample,41.37785,2.15052,18,0.0545
+51,Pl. Vicenç Martorell,Ciutat Vella,41.38426,2.16926,10,0.2908
+13,C/ Marina 25-33,Sant Martí,41.38814,2.19555,48,0.0933
+390,C/ Comerç 36,Ciutat Vella,41.38696,2.18202,15,0.099
+469,C/ Sant Francesc Xavier 1,Nou Barris,41.4417,2.17816,9,0.1202
+379,Av. Josep Tarradellas 27,Sants-Montjuïc,41.38293,2.14207,17,0.0717
+111,C/ Aragó 147,Eixample,41.38475,2.15467,16,0.0485
+177,C/ Rosselló 557,Sant Martí,41.41108,2.18098,35,0.1009
+43,C/ Clot 1,Sant Martí,41.40639,2.18744,20,0.1453
+350,C/ Londres 63,Eixample,41.39176,2.14829,23,0.0688
+270,270 - Crta. De Ribes 77 (Trinitat Vella),Sant Andreu,41.44863,2.18984,26,0.1394
+86,C/ Viladomat 2,Eixample,41.37557,2.16293,27,0.0546
+221,Gran De Gràcia 155 (Metro Fontana),Gràcia,41.40254,2.15247,18,0.1291
+14,Av. Marqués De L'Argentera 15,Ciutat Vella,41.38484,2.18508,25,0.0716
+316,C/ Cantàbria 55,Sant Martí,41.4224,2.19807,23,0.244
+254,Rambla De L'Onze De Setembre 69,Sant Andreu,41.43,2.19025,24,0.1291
+426,C/ De Ribes 59 B,Eixample,41.39828,2.18303,26,0.0601
+448,C/ Ramón Turró 160,Sant Martí,41.39728,2.19979,25,0.0757
+467,Pl. Jesús Carrasco,Nou Barris,41.44505,2.17673,18,0.1586
+58,C/ Valldonzella 2,Ciutat Vella,41.38458,2.16626,12,0.0986
+284,Av. Diagonal 652,Les Corts,41.38946,2.13149,27,0.0481
+388,C/ Riera Alta 6,Ciutat Vella,41.38064,2.16716,33,0.0652
+313,C/ Feliu De Casanova 1,Sants-Montjuïc,41.37542,2.12978,24,0.1058
+547,C/ Mallorca 194 (Xamfrà),Eixample,41.38997,2.15772,19,0.0738
+255,C/ Irlanda 34,Sant Andreu,41.4315,2.18579,11,0.078
+399,C/ Pavia 3,Sants-Montjuïc,41.37347,2.13327,25,0.198
+538,Av. Estadi 38,Sants-Montjuïc,41.36631,2.15221,24,0.3268
+414,C/ Casp 67,Eixample,41.39372,2.17643,29,0.1376
+333,Passatge De Senillosa 3-5,Sarrià-Sant Gervasi,41.39547,2.12505,25,0.1265
+289,C/ Múrcia 64,Sant Andreu,41.4167,2.191,26,0.0585
+309,C/ Sant Ramon Nonat 26,Les Corts,41.37702,2.11698,17,0.0918
+239,C/ Indústria 329,Sant Andreu,41.41729,2.18448,35,0.1233
+285,C/ Malats 98-100,Sant Andreu,41.43667,2.1861,14,0.082
+71,C/ Floridablanca 145,Eixample,41.38195,2.16291,23,0.1014
+519,C/ Pedrell 52,Horta-Guinardó,41.42465,2.16629,23,0.4078
+303,C/ Cavallers 67,Les Corts,41.39343,2.11511,27,0.9363
+52,Pl. Sant Miquel 4,Ciutat Vella,41.38171,2.17729,24,0.2211
+109,C/ Londres 53,Eixample,41.39126,2.14763,20,0.0823
+293,C/ Granollers 1,Horta-Guinardó,41.42831,2.16299,24,0.1344
+61,C/ Aragó 288,Eixample,41.39352,2.1668,22,0.0888
+263,Pg. Torras I Bages 29,Sant Andreu,41.43788,2.19107,19,0.1277
+279,C/ Mas Casanovas 137,Horta-Guinardó,41.4159,2.17456,24,0.1641
+125,Pg. Marítim 31 B (Annexa A La 12),Ciutat Vella,41.38353,2.19507,28,0.1051
+128,Rambla De Guipúscoa 43/Fluvia,Sant Martí,41.41584,2.19598,41,0.1484
+569,C/ Quatre Camins 46,Sarrià-Sant Gervasi,41.41047,2.1312,26,4.3553
+375,World Trade Center,Ciutat Vella,41.37203,2.18045,39,0.0391
+91,C/ Comte D'Urgell 43,Eixample,41.38125,2.15947,31,0.0469
+440,C/ Selva De Mar 230,Sant Martí,41.41769,2.19769,22,0.1777
+457,C/ Granadella 10-19 | C/ Sas,Sant Andreu,41.43847,2.20429,15,0.2807
+491,C/ Pare Mariana 24,Horta-Guinardó,41.43067,2.14564,27,0.1297
+439,Rbla. Badal 73 | C/ Constitució,Sants-Montjuïc,41.36854,2.13284,16,0.1214
+247,C/ Felipe Ii 112,Sant Andreu,41.42193,2.18491,29,0.1615
+207,Av. Diagonal 634,Les Corts,41.39085,2.13658,24,0.0815
+493,Pg. Vall D'Hebrón 80,Gràcia,41.41996,2.14018,21,0.6412
+87,C/ Rocafort 187,Eixample,41.38324,2.14792,23,0.0738
+458,C/ Tucumán 21,Sant Andreu,41.44643,2.20189,21,0.1911
+301,C/ Marie Curie 8-14,Nou Barris,41.43669,2.16931,25,0.1117
+240,C/ Josep Estivill 32,Sant Andreu,41.41756,2.18772,18,0.0918
+277,Travessera De Gràcia 328,Horta-Guinardó,41.40821,2.169,27,0.0914
+272,C/ Concepció Arenal 281,Sant Andreu,41.4325,2.1842,27,0.0867
+266,C/ Riera D'Horta 2,Sant Andreu,41.42759,2.18397,29,0.1205
+561,C/ Manila 53,Les Corts,41.39007,2.1265,23,0.1269
+141,C/ Bilbao 174,Sant Martí,41.40902,2.19542,27,0.1361
+475,C/ Campo Florido 66,Sant Andreu,41.42167,2.17999,18,0.0919
+271,Via De Bàrcino 54,Sant Andreu,41.45137,2.1923,20,0.2785
+117,C/ Rosa Sensat 12,Sant Martí,41.39061,2.19723,18,0.0447
+435,Av. Doctor Marañon 25 |Pau Gargallo,Les Corts,41.38358,2.11219,25,0.4319
+158,Rambla De Prim 19,Sant Martí,41.41166,2.21833,29,0.0318
+444,C/ Lleida 40,Sants-Montjuïc,41.37173,2.1554,25,0.2301
+205,C/ De Can Segalar 4,Les Corts,41.38794,2.1306,35,0.0668
+26,C/ Dos De Maig 230-232,Sant Martí,41.40717,2.18207,13,0.1363
+198,C/ Vallespir 194,Les Corts,41.38471,2.13344,21,0.092
+9,Av. Marqués De L'Argentera 13,Ciutat Vella,41.38455,2.18492,26,0.0274
+191,C/ Entença 137,Eixample,41.38195,2.14747,36,0.0624
+248,C/ Palència 31,Sant Andreu,41.41821,2.1904,27,0.0957
+424,Pg. Marítim De La Barceloneta 6,Ciutat Vella,41.37956,2.19263,26,0.0456
+148,Ronda Sant Pau 79,Eixample,41.37835,2.16331,22,0.0731
+106-2,Pl Joanic - C / Ramon Y Cajal 152,Gràcia,41.4051,2.16264,7,0.0488
+567,C/ Ramon Turró 182 (Xamfrà),Sant Martí,41.39816,2.20085,18,0.089
+477,C/ Amilcar 78,Horta-Guinardó,41.42608,2.17225,23,0.1643
+503,C/ Maignon 31-41,Gràcia,41.40959,2.1525,25,0.3301
+80,C/ Enric Granados 35,Eixample,41.38967,2.15991,17,0.0941
+461,Av. Rio De Janeiro 118,Nou Barris,41.44249,2.18573,27,0.1663
+445,C/ Vilamarí 2,Eixample,41.3755,2.154,21,0.0736
+357,C/ Cardener 59,Gràcia,41.4106,2.15799,16,0.3467
+331,C/ Castellnou 65,Sarrià-Sant Gervasi,41.39705,2.12794,25,0.1118
+268,C/ Fernando Pessoa 72,Sant Andreu,41.44572,2.19298,24,0.1499
+581,Av. Jordà 18,Horta-Guinardó,41.42678,2.13842,28,2.614
+372,C/ Ribes 77,Eixample,41.4001,2.18417,21,0.0795
+192,C/ Joan Güell 50,Sants-Montjuïc,41.37864,2.13355,19,0.103
+337,C/ Carme Karr 12-14,Sarrià-Sant Gervasi,41.39862,2.12049,20,0.9412
+328,C/ Artesa De Segre 2,Sarrià-Sant Gervasi,41.40299,2.13447,25,0.113
+597,C/ Provença 310,Eixample,41.39597,2.16355,24,0.09
+352,C/Radi 10/Gran Via De Les Corts Catalanes,Sants-Montjuïc,41.36328,2.13416,28,0.0256
+347,C/ Alts Forns 77,Sants-Montjuïc,41.35955,2.14178,31,0.1551
+478,C/ Escultor Llimona 7,Nou Barris,41.42761,2.16976,28,0.128
+188,Pg. De Sant Antoni 1,Sants-Montjuïc,41.37613,2.13619,21,0.1196
+159,Av. Diagonal 26,Sant Martí,41.41108,2.21631,29,0.1301
+582,C/ Judea 1,Horta-Guinardó,41.42506,2.14117,30,0.236
+163,Av. Icària 202,Sant Martí,41.39421,2.20088,23,0.1627
+264,C/ Ferran Junoy 10,Sant Andreu,41.43819,2.19539,30,0.1469
+94,Gran Via De Les Corts Catalanes 375-385,Eixample,41.37579,2.14991,41,0.0521
+598,C/ Bruc 103 (Xamfrà),Eixample,41.39582,2.16728,22,0.0226
+459,Pg. Santa Coloma 105,Sant Andreu,41.44794,2.19768,33,0.2421
+250,C/ Portugal 3,Sant Andreu,41.42582,2.19121,24,0.1925
+317,Rambla De Prim 256,Sant Martí,41.42566,2.20086,22,0.407
+256,C/ Malats 28-30,Sant Andreu,41.43613,2.18944,29,0.0681
+336,Av. Josep Vicenç Foix 52,Sarrià-Sant Gervasi,41.39488,2.12054,21,0.1408
+116,C/ Del Dr. Aiguader 72 / Pg. Salvat Papasseit,Ciutat Vella,41.38384,2.19148,30,0.1602
+132,Pl.Valentí Almirall,Sant Martí,41.40848,2.19204,21,0.1235
+220,C/ Tuset 19,Sarrià-Sant Gervasi,41.3961,2.15132,23,0.116
+361,Pg. De Colom (Les Rambles),Ciutat Vella,41.37652,2.17881,24,0.0482
+427,C/ De Sant Pau 119/ Ronda Sant Pau,Ciutat Vella,41.3754,2.168,22,0.0687
+300,C/ De Maladeta 1,Nou Barris,41.43158,2.17691,15,0.1516
+283,C/ Fulton 1,Horta-Guinardó,41.42972,2.1617,16,0.0938
+454,C/ Sardenya 402,Horta-Guinardó,41.40723,2.16848,26,0.0611
+238,C/ Espronceda 298,Sant Andreu,41.41588,2.19085,23,0.0894
+102,Av. Diagonal 612,Sarrià-Sant Gervasi,41.39257,2.14222,21,0.0735
+516,C/ Sant Adrià 88,Sant Andreu,41.43546,2.20016,19,0.2442
+260,Carrer Del Cinca 7,Sant Andreu,41.43569,2.19209,25,0.0721
+185,C/Gavà 81,Sants-Montjuïc,41.37037,2.13894,14,0.1613
+136,Gran Via De Les Corts Catalanes 1062,Sant Martí,41.41393,2.2018,26,0.1104
+422,C/ Jordi Girona 29,Les Corts,41.38812,2.11541,42,0.1548
+193,C/ Fígols 1,Les Corts,41.3813,2.12899,22,0.0846
+92,C / Provença 241,Eixample,41.39389,2.16016,15,0.0821
+321,C/ Sant Hermenegild 30,Sarrià-Sant Gervasi,41.40315,2.14458,21,0.2144
+349,C/ De L'Energia 2 / Alts Forns,Sants-Montjuïc,41.35733,2.1372,33,0.4015
+406,Gran Via De Les Corts Catalanes 592,Eixample,41.38637,2.16467,28,0.0951
+69,Carrer De La Marina 25-33,Sant Martí,41.38851,2.19507,37,0.0419
+162,C/ Ramon Turró 292,Sant Martí,41.40386,2.20843,25,0.0967
+367,C/ Marquès De Sentmenat 46,Les Corts,41.38497,2.13762,28,0.1101
+603,C/ Còrsega 612 (Xamfrà),Eixample,41.40932,2.17658,15,0.048
+157,C/ Llull 465,Sant Martí,41.41323,2.21777,32,0.0852
+600,C/ València 237,Eixample,41.39187,2.16202,19,0.091
+297,C/ Turó Blau 1-3,Nou Barris,41.43882,2.17678,24,0.1652
+275,Av. Rio De Janeiro 3,Nou Barris,41.43068,2.18218,30,0.1093
+187,C/ De Sant Pau 89 - 97,Ciutat Vella,41.37688,2.16982,14,0.0361
+580,Pl. Mossèn Ferran Palau 3,Horta-Guinardó,41.43286,2.144,24,1.4169
+428,C/ Pujades 103,Sant Martí,41.39839,2.19608,29,0.0589
+31,Pl. Del Mar,Ciutat Vella,41.3748,2.1889,9,0.075
+344,C/ Ciutat D'Asunción 73 / Potosí,Sant Andreu,41.44314,2.1996,27,0.2681
+540,C/ Mandoni 6,Sants-Montjuïc,41.36935,2.1426,15,0.1599
+377,Pl. Ictíneo,Ciutat Vella,41.37763,2.18369,29,0.0791
+568,C/ Román Macaya 8,Sarrià-Sant Gervasi,41.41347,2.1352,24,0.7459
+215,C/ Ganduxer 29,Sarrià-Sant Gervasi,41.39394,2.13803,12,0.122
+450,C/ Cristobal De Moura 84,Sant Martí,41.41071,2.20617,26,0.1184
+479,Pg. Fabra I Puig 344,Nou Barris,41.43062,2.16711,16,0.1846
+565,C/ Fra Juníper Serra 53 | C/ Santander,Sant Andreu,41.43215,2.20549,28,0.264
+486,C/ Porto 35 | Av. Estatut De Catalunya,Horta-Guinardó,41.43061,2.15646,27,0.1856
+381,C/ Agustí Duran I Sanpere 10,Ciutat Vella,41.38164,2.16773,35,0.0473
+174,Pg. De Garcia Fària 21/Espronceda,Sant Martí,41.40065,2.21019,26,0.1303
+323,C/ Vallmajor 13,Sarrià-Sant Gervasi,41.39816,2.13867,19,0.133
+438,C/ Nàpols 183,Eixample,41.39817,2.17549,23,0.1007
+315,C/ Del Guinardó 32-38,Sant Martí,41.41563,2.18179,24,0.1157
+376,World Trade Center,Ciutat Vella,41.37187,2.1803,42,0.262
+282,Pg. Font D´En- Fargas 1,Horta-Guinardó,41.42755,2.16599,27,0.0988
+23,C/ Bruc 45,Eixample,41.39247,2.17174,21,0.2014
+338,Av. Josep Vicenç Foix 63,Sarrià-Sant Gervasi,41.39772,2.11946,34,2.5975
+431,Av. Joan Xxiii 17,Les Corts,41.38347,2.12217,19,0.1257
+253,C/ Onze De Setembre 37-39,Sant Andreu,41.42986,2.1922,20,0.0603
+314,Rambla Del Brasil 44,Sants-Montjuïc,41.37831,2.12973,14,0.1254
+164,C/ Independència 379,Sant Martí,41.41184,2.17789,21,0.0752
+183,C/ Gavà 1,Sants-Montjuïc,41.37237,2.14195,29,0.0811
+278,Travessera De Gràcia 368,Horta-Guinardó,41.40988,2.17153,22,0.0891
+460,C/ Mireia 28,Sant Andreu,41.45139,2.18947,13,0.4862
+32,La Barceloneta (Cn Barceloneta),Ciutat Vella,41.37369,2.18893,29,0.0688
+400,Moll Oriental,Ciutat Vella,41.36945,2.18796,43,0.323
+474,Via Favència 47,Nou Barris,41.44186,2.16642,22,0.8833
+156,C/ Selva De Mar 46,Sant Martí,41.40914,2.20882,26,0.1075
+462,C/ Palamós 33,Nou Barris,41.44692,2.18486,27,0.1821
+175,C/ Llull 309,Sant Martí,41.40653,2.20912,25,0.0895
+59,C/ Agustí Duran I Sanpere 1,Ciutat Vella,41.38138,2.16808,19,0.0536
+463,C/ Pedrosa 24,Nou Barris,41.44907,2.18338,20,0.4072
+208,Av. Diagonal 630,Sarrià-Sant Gervasi,41.39152,2.13907,31,0.0685
+131,Rbla. Guipúscoa 158,Sant Martí,41.42284,2.20603,28,0.2811
+354,Rambla Del Brasil 5,Sants-Montjuïc,41.37594,2.12995,23,0.0783
+222,C/ Del Canó 1,Gràcia,41.40133,2.15744,25,0.126
+112,C/ Floridablanca 49,Eixample,41.37767,2.15723,18,0.1102
+526,C/ Tarongers | Av. Miramar (Telefèric),Sants-Montjuïc,41.36839,2.1645,25,1.4024
+483,C/ Lisboa 1,Horta-Guinardó,41.42955,2.15895,28,0.1321
+455,C/ Provença 595,Sant Martí,41.41058,2.18268,18,0.1205
+176,Pg. De Garcia Fària 37/Josep Ferrater,Sant Martí,41.40322,2.2136,30,0.1312
+544,C/ Montfar 1,Sants-Montjuïc,41.37049,2.14873,14,0.2196
+242,C/ Ramon Albó 1,Sant Andreu,41.42445,2.17732,24,0.112
+485,Pg. Valldaura 26,Horta-Guinardó,41.43749,2.15657,25,0.9842
+408,C/ Ramon Trias Fargas 23,Sant Martí,41.389,2.19233,45,0.0896
+72,C/ Provença 215,Eixample,41.39278,2.15863,18,0.0593
+470,C/ Gòngora 23,Nou Barris,41.44328,2.17462,20,0.1512
+355,C/ Riera Blanca 123,Sants-Montjuïc,41.37146,2.12785,25,0.1147
+604,C/ Còrsega 578,Eixample,41.40795,2.17486,26,0.0622
+421,C/ Vallespir 13,Sants-Montjuïc,41.37812,2.13787,21,0.0869
+326,C/ Balmes 409,Sarrià-Sant Gervasi,41.40741,2.13811,30,0.1892
+186,C/Consell De Cent 6,Sants-Montjuïc,41.37555,2.1439,22,0.0857
+224,C / Girona 176,Eixample,41.4,2.16445,20,0.0888
+55,La Rambla 56,Ciutat Vella,41.3802,2.17448,17,0.1469
+25,C/ Bruc 102,Eixample,41.3954,2.1682,21,0.0257
+212,Av. Sarrià 163,Les Corts,41.39224,2.13093,21,0.1214
+456,C/ Múrcia 1,Sant Martí,41.41434,2.18745,14,0.1433
+553,Via Augusta 68,Gràcia,41.40051,2.15182,25,0.0584
+227,C/ Del Torrent De Les Flors 102,Gràcia,41.40785,2.15867,15,0.1157
+155,C/ Pujades 311/ Fluvià,Sant Martí,41.40701,2.20745,29,0.0878
+190,Av. Litoral 72,Sant Martí,41.39614,2.20784,26,0.1508
+370,C/ Sardenya 326,Eixample,41.40397,2.17291,29,0.0591
+308,C/ Cardenal Reig 11,Les Corts,41.37684,2.11403,22,0.116
+396,C/ Joan Miró 2-12,Sant Martí,41.38903,2.19683,28,0.0397
+42,C/ Ciutat De Granada 165 | Av.Diagonal,Sant Martí,41.40441,2.18992,18,0.1083
+46,C/ Doctor Trueta 19,Sant Martí,41.39043,2.19229,38,0.0443
+490,Pg. Vall D'Hebrón 168,Horta-Guinardó,41.42807,2.14438,48,0.1981
+609,C/ Àvila 94,Sant Martí,41.39846,2.19373,22,0.0458
+304,Pg. Manuel Girona 7,Sarrià-Sant Gervasi,41.39038,2.121,26,0.1996
+564,C/ Carrera 1,Sants-Montjuïc,41.37443,2.17486,22,0.1567
+241,C/ Teodor Llorente 1,Horta-Guinardó,41.41918,2.18018,31,0.1088
+351,C/ Jane Addams 26/ Crta. Del Prat,Sants-Montjuïc,41.36212,2.13562,32,0.0811
+180,Gran Via De Les Corts Catalanes 179 (D),Sants-Montjuïc,41.36756,2.13882,48,0.1255
+420,Gran Via De Les Corts Catalanes 368,Sants-Montjuïc,41.37433,2.14794,25,0.05
+226,C/ Montmany 1,Gràcia,41.40356,2.16093,20,0.112
+273,Av. Meridiana 404,Sant Andreu,41.43041,2.18342,35,0.0349
+237,C/ Rius I Taulet 4,Sants-Montjuïc,41.37274,2.15392,23,0.1017
+249,C/ Antilles 8,Sant Andreu,41.42508,2.18728,23,0.1165
+324,C/ Reina Victoria 31,Sarrià-Sant Gervasi,41.39695,2.13635,23,0.1125
+121,C/ Castillejos 258,Eixample,41.40645,2.17854,19,0.0816
+286,C/ Bolívia 76,Sant Martí,41.40302,2.19135,17,0.0718
+7,Pg. Pujades 1 (Jutjats),Ciutat Vella,41.38889,2.18329,25,0.0646
+137,Gran Via De Les Corts Catalanes 1041,Sant Martí,41.41458,2.20081,21,0.1144
+82,C/ Calàbria 112,Eixample,41.38032,2.15444,35,0.069
+502,Av. Vallcarca 11,Gràcia,41.40744,2.14921,9,0.2095
+83,C/ Calabria 158,Eixample,41.38217,2.15206,20,0.1017
+262,C/ Entença 70,Eixample,41.3791,2.15162,17,0.0738
+340,C/ Sant Adrià 113,Sant Andreu,41.43618,2.2047,20,0.1401
+200,C/ Joan Güell 174,Les Corts,41.3839,2.13129,21,0.0773
+171,Av. Litoral 172,Sant Martí,41.39199,2.20371,51,0.1362
+432,C/ Martí I Franquès 1,Les Corts,41.38471,2.11708,23,0.1216
+288,Pl. Virrei Amat,Nou Barris,41.42964,2.17444,31,0.1557
+401,Pla De Palau,Ciutat Vella,41.38242,2.18372,20,0.0701
+232,C/ Palaudàries 2,Sants-Montjuïc,41.3745,2.17303,26,0.1352
+3,C/ Nàpols 82,Eixample,41.39416,2.18133,23,0.0617
+384,C/ Vilamarí 85,Eixample,41.38071,2.14684,22,0.0674
+161,C/ Ramon Turró 91,Sant Martí,41.3953,2.1966,19,0.1252
+206,Av. Diagonal 650,Les Corts,41.38979,2.13286,30,0.0646
+482,Pg. Universal 29 | C/ Doctor Letamendi,Horta-Guinardó,41.4372,2.16202,22,0.1808
+596,C/ Diputació 303,Eixample,41.39264,2.16965,23,0.0901
+44,Av. Meridiana 71,Eixample,41.40147,2.18677,8,0.1114
+369,C/ Consell De Cent 482,Eixample,41.40013,2.17802,23,0.0517
+211,C/ Sancho De Ávila 60-64,Sant Martí,41.39875,2.19021,15,0.0709
+320,C/ Madrazo 39,Sarrià-Sant Gervasi,41.40031,2.14914,23,0.1377
+33,C/ Pontevedra 58B | C/ Judici,Ciutat Vella,41.37686,2.19067,17,0.0702
+216,C/ Madrazo 131,Sarrià-Sant Gervasi,41.39678,2.14456,24,0.0981
+182,C/ Sant Pere D´Abanto 2,Sants-Montjuïc,41.37137,2.14357,29,0.0985
+81,C/ Vilamarí 61,Eixample,41.37907,2.14906,20,0.0687
+389,Recinte Parc De La Ciutadella,Ciutat Vella,41.38739,2.18754,27,0.1592
+274,Rambla Fabra I Puig 67,Sant Andreu,41.42992,2.18498,26,0.0708
+437,Pg. Zona Franca 9,Sants-Montjuïc,41.35132,2.1451,35,1.217
+12,Pg. Maritim 23 (Hospital Del Mar),Ciutat Vella,41.38345,2.19503,22,0.0154
+527,Pg. Olimpic 8,Sants-Montjuïc,41.36197,2.15432,29,2.0106
+610,C/ Àvila 102,Sant Martí,41.39902,2.1929,27,0.0337
+394,C/ Diputació 226,Eixample,41.38731,2.16313,18,0.0709
+118,C/ Pujades 3,Sant Martí,41.39212,2.1875,21,0.1108
+397,Av. Litoral (Pg Marítim Del Port Olímpic),Sant Martí,41.38891,2.19931,22,0.096
+168,Selva De Mar / Pg. Del Taulat,Sant Martí,41.40537,2.21358,22,0.1257
+96,Gran Via De Les Corts Catalanes 368,Sants-Montjuïc,41.37411,2.1482,20,0.0766
+40,C/ Doctor Aiguader 2,Ciutat Vella,41.38233,2.18709,17,0.0888
+20,C/ Cartagena 308,Eixample,41.41031,2.17573,9,0.0385
+67,C/ Rocafort 214 | C/ Rosselló,Eixample,41.38529,2.14548,20,0.0886
+312,C/ Arizala 77,Les Corts,41.37891,2.1233,33,0.1554
+452,Gran Via De Les Corts Catalanes 1157 (D),Sant Martí,41.4195,2.20934,52,0.224
+103,C/ Aragó 629,Sant Martí,41.4101,2.18845,15,0.032
+537,Av. Estadi 12,Sants-Montjuïc,41.36536,2.14761,35,0.2539
+251,C/ Cardenal Tedeschini 13,Sant Andreu,41.42536,2.18521,31,0.0826
+213,C/ Santa Fe De Nou Mèxic 2,Sarrià-Sant Gervasi,41.39358,2.13459,30,0.0847
+348,Jardins De Can Ferrero/Pg.De La Zona Franca,Sants-Montjuïc,41.35707,2.14156,31,0.1496
+45,C/ Sardenya 66,Sant Martí,41.39147,2.18937,26,0.0594
+307,C/ Pintor Ribalta | Av. Xile,Les Corts,41.3792,2.11358,26,0.2921
+572,Av. Can Marcet 3,Horta-Guinardó,41.43418,2.15188,22,0.2116
+98,C/ Dolors Batlle I Sunyer 2,Sants-Montjuïc,41.38059,2.1407,19,0.0698
+126,Pg. De Colom /Via Laietana,Ciutat Vella,41.38063,2.18228,22,0.0347
+327,C/ Reus 23,Sarrià-Sant Gervasi,41.40501,2.1346,21,0.1967
+423,C/ Honduras 32-34,Sant Andreu,41.42025,2.18949,30,0.1306
+499,Av. Vallcarca 196,Gràcia,41.41606,2.14215,25,0.3706
+89,C/ Rosselló 101,Eixample,41.38719,2.14913,20,0.0634
+558,Rbla Muntanya 49,Horta-Guinardó,41.42095,2.17684,36,0.1404
+409,C/ Joan D'Àustria 31B,Sant Martí,41.39238,2.19251,26,0.1106
+501,C/ Elisa 1,Sarrià-Sant Gervasi,41.40527,2.14202,11,0.2289
+299,C/ De L'Escultor Ordóñez 55,Nou Barris,41.43408,2.17483,24,0.1398
+4,C/ Ribes 13,Eixample,41.39332,2.18125,15,0.1374
+236,Av. Paral.Lel 194,Eixample,41.37512,2.15231,24,0.0638
+332,C/ Doctor Roux 86,Sarrià-Sant Gervasi,41.3999,2.12819,26,0.1157
+554,C/ Avenir 35,Sarrià-Sant Gervasi,41.39578,2.14686,23,0.0723
+515,C/ Sant Adrià 43,Sant Andreu,41.43521,2.1948,23,0.1727
+21,C/ Sant Antoni Maria Claret 214,Eixample,41.41084,2.17406,18,0.0816
+318,C/ Castillejos 388,Horta-Guinardó,41.41243,2.17059,31,0.1714
+29,C/ Provença 388-390,Eixample,41.40106,2.16994,17,0.1386
+113,Ronda De Sant Pau 51,Eixample,41.37731,2.16467,33,0.0706
+410,Pg.De Colom (Les Rambles),Ciutat Vella,41.37643,2.17871,33,0.0214
+269,Via Barcino 105/107,Sant Andreu,41.44815,2.19294,20,0.1069
+391,C/ Gran De La Sagrera 74,Sant Andreu,41.42306,2.19138,26,0.179
+306,C/ Doctor Salvador Cardenal 1-5,Les Corts,41.38539,2.12289,26,0.1172
+108,C / Indústria 10,Gràcia,41.40221,2.1649,9,0.1188
+27,C/ Provença 322,Eixample,41.39675,2.16463,16,0.0466
+179,Pg. Zona Franca 244,Sants-Montjuïc,41.36352,2.1369,15,0.058
+311,C/ Gallego 2,Les Corts,41.37856,2.12025,21,0.0882
+70,C/ Comte Urgell 23,Eixample,41.38039,2.16065,24,0.0687
+267,Pg. Torras I Bages 129,Sant Andreu,41.44336,2.19063,24,0.151
+541,C/ Marbre 2,Sants-Montjuïc,41.36142,2.14762,27,0.3824
+139,Gran Via De Les Corts Catalanes 1131,Sant Martí,41.4184,2.20581,34,0.1068
+127,C/ Aragó 659 /Navas De Tolosa,Sant Martí,41.41207,2.19075,20,0.1522
+2,C/ Roger De Flor 126,Eixample,41.39549,2.1772,27,0.0364
+195,C/ Vallespir 130,Les Corts,41.38214,2.13541,20,0.0938
+184,C/ Quetzal 22-24,Sants-Montjuïc,41.36754,2.13423,26,0.0908
+302,C/ Cavallers 41,Les Corts,41.39064,2.11154,39,2.7625
+140,C/ Viladomat 122,Eixample,41.38088,2.15599,23,0.0677
+210,C/ Vilardell 18,Sants-Montjuïc,41.37452,2.14226,29,0.0611
+10,C/ 60 Número 25,Sants-Montjuïc,41.34677,2.14362,42,10.7998
+129,C/ Manso 46,Eixample,41.37705,2.16114,20,0.0672
+234,Pg. De L´Exposició 34,Sants-Montjuïc,41.37153,2.1622,20,0.2099
+416,Rambla Del Raval 20,Ciutat Vella,41.37811,2.16967,23,0.0398
+41,Pl. Poeta Boscà | C/ Atlàntida,Ciutat Vella,41.37933,2.18991,23,0.0774
+138,Gran Via De Les Corts Catalanes 1118,Sant Martí,41.41679,2.20583,19,0.1037
+11,Pg. Maritim 11 (Davant Pl. Brugada),Ciutat Vella,41.38238,2.19433,33,0.0428
+430,C/ Alfambra 2 | Av. Diagonal,Les Corts,41.38564,2.1131,27,0.1116
+518,C/ Llobregós 115,Horta-Guinardó,41.42469,2.15705,26,0.3426
+145,C/ Marroc 103,Sant Martí,41.40997,2.20256,25,0.1423
+383,C/ Numància 2,Sants-Montjuïc,41.38122,2.14177,19,0.0395
+346,Pg. Zona Franca 182,Sants-Montjuïc,41.3608,2.13893,33,0.1
+47,C/ Ramon Trias Fargas 21,Sant Martí,41.39022,2.1904,42,0.048
+197,C/ Gelabert 1,Les Corts,41.38716,2.14109,24,0.1157
+398,Pg. Marítim De La Barceloneta/Andrea Dòria,Ciutat Vella,41.38096,2.19346,26,0.0558
+425,C/ De Cervelló 5,Ciutat Vella,41.37656,2.17486,23,0.0312
+489,C/ Jorge Manrique 15,Horta-Guinardó,41.43123,2.14991,26,0.1848
+217,C/ Rector Ubach 24,Sarrià-Sant Gervasi,41.39857,2.14408,22,0.1357
+124,C/ Nova Bocana,Ciutat Vella,41.37025,2.18781,27,0.0809
+258,C/ Fernando Pessoa 41,Sant Andreu,41.44199,2.19296,26,0.1751
+178,Pg. De Garcia Fària 85,Sant Martí,41.40536,2.21621,26,0.2557
+405,C/ Comte Borrell 198,Eixample,41.3854,2.15218,22,0.0594
+339,C/ Ramon Turró 246,Sant Martí,41.40171,2.20538,24,0.0646
