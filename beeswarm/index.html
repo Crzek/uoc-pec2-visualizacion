@@ -75,7 +75,7 @@ d3.csv("esperanza_vida_2023.csv", d3.autoType).then(data => {
   data.forEach(d => d.region = REG[d.region_bm]);
   const regions = d3.groups(data, d => d.region).map(([k, v]) => ({ k, med: d3.median(v, d => d.esperanza_vida), n: v.length }))
     .sort((a, b) => a.med - b.med);
-  const W = 980, M = { t: 30, r: 24, b: 40, l: 200 };
+  const W = 980, M = { t: 30, r: 70, b: 40, l: 200 };
   const rowH = 96, H = M.t + regions.length * rowH + M.b;
   const x = d3.scaleLinear().domain([52, 88]).range([M.l, W - M.r]);
   const r = d3.scaleSqrt().domain([0, d3.max(data, d => d.poblacion)]).range([0, 26]);
