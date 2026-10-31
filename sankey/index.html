@@ -69,7 +69,7 @@ const tt = d3.select("#tt");
 let current = "all";
 
 d3.json("flujos_energia_espana_2024.json").then(data => {
-  const W = 980, H = 600, M = { t: 34, r: 250, b: 10, l: 170 };
+  const W = 1000, H = 600, M = { t: 34, r: 250, b: 10, l: 200 };
   const sankey = d3.sankey()
     .nodeWidth(14).nodePadding(16)
     .nodeAlign(n => n.col)
@@ -83,7 +83,7 @@ d3.json("flujos_energia_espana_2024.json").then(data => {
 
   const svg = d3.select("#chart").append("svg").attr("viewBox", [0, 0, W, H]).attr("role", "img")
     .attr("aria-label", "Diagrama de Sankey de los flujos de energía en España en 2024");
-  const heads = [["Electricidad generada por fuente", M.l - 8, "end"], ["Vector energético", (M.l + W - M.r) / 2, "middle"], ["Consumo final por sector", W - M.r + 22, "start"]];
+  const heads = [["Electricidad por fuente", M.l - 8, "end"], ["Vector energético", (M.l + W - M.r) / 2, "middle"], ["Consumo final por sector", W - M.r + 22, "start"]];
   svg.append("g").selectAll("text").data(heads).join("text").attr("class", "colhead")
     .attr("x", d => d[1]).attr("y", 14).attr("text-anchor", d => d[2]).text(d => d[0]);
 
@@ -110,7 +110,7 @@ d3.json("flujos_energia_espana_2024.json").then(data => {
     .attr("x", d => d.col === 0 ? d.x0 - 8 : d.x1 + 8)
     .attr("y", d => (d.y0 + d.y1) / 2).attr("dy", "0.35em")
     .attr("text-anchor", d => d.col === 0 ? "end" : "start");
-  lbl.append("tspan").attr("font-weight", 600).text(d => d.name.replace(" (uso directo)", "").replace(" y biocarburantes", ""));
+  lbl.append("tspan").attr("font-weight", 600).text(d => d.name.replace(" (uso directo)", "").replace(" y biocarburantes", "").replace("Biomasa, biogás y residuos", "Biomasa y residuos"));
   lbl.append("tspan").attr("class", "v").text(d => `  ${fmtES(d.value)}`);
 
   // Leyenda

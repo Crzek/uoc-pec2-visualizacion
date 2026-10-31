@@ -103,7 +103,7 @@ d3.csv("esperanza_vida_2023.csv", d3.autoType).then(data => {
 
   let mode = "region", popSize = false;
   function layout() {
-    const rad = d => popSize ? Math.max(2.4, r(d.poblacion)) : 4.6;
+    const rad = d => popSize ? Math.max(2.4, r(d.poblacion)) : 5.6;
     const cy = d => mode === "region" ? yRow(d.region) : (M.t + H - M.b) / 2;
     const nodes = data.map(d => ({ d, x: x(d.esperanza_vida), y: cy(d), r: rad(d) }));
     const sim = d3.forceSimulation(nodes)
@@ -128,15 +128,21 @@ d3.csv("esperanza_vida_2023.csv", d3.autoType).then(data => {
       .attr("x1", d => x(d.med)).attr("x2", d => x(d.med)).attr("y1", d => ry(d.k) - 30).attr("y2", d => ry(d.k) + 30)
       .attr("stroke-opacity", 0.0).transition().delay(500).attr("stroke-opacity", 0.55);
 
-    // Anotaciones
-    const pick = ["ESP", "MCO", "NGA", "TCD", "USA", "IND", "CHN"];
+    // Anotaciones: etiqueta encima del enjambre de su fila, con línea guía hasta el punto
+    const NAMES = { ESP: "España", MCO: "Mónaco", NGA: "Nigeria", USA: "EE. UU.", IND: "India", CHN: "China" };
+    const ANCHOR = { ESP: "end", MCO: "start", NGA: "start", USA: "middle", IND: "middle", CHN: "middle" };
+    const pick = mode === "region" ? Object.keys(NAMES) : ["ESP", "MCO", "NGA", "IND"];
     const ann = data.filter(d => pick.includes(d.iso3));
+    const rowTop = {};
+    data.forEach(d => { const k = mode === "region" ? d.region : "all"; rowTop[k] = Math.min(rowTop[k] ?? Infinity, d._y - d._r); });
+    const labelY = d => rowTop[mode === "region" ? d.region : "all"] - 8;
     setTimeout(() => {
       gAnn.selectAll("g").data(ann, d => d.iso3).join(en => { const g = en.append("g"); g.append("line").attr("class", "annline"); g.append("text").attr("class", "ann"); return g; })
-        .call(g => g.select("line").attr("x1", d => d._x).attr("x2", d => d._x).attr("y1", d => d._y - d._r - 1).attr("y2", d => d._y - d._r - 12))
-        .call(g => g.select("text").attr("x", d => d._x).attr("y", d => d._y - d._r - 15).attr("text-anchor", "middle")
+        .call(g => g.select("line").attr("x1", d => d._x).attr("x2", d => d._x).attr("y1", d => d._y - d._r - 1).attr("y2", d => labelY(d) + 3))
+        .call(g => g.select("text").attr("x", d => d._x + (ANCHOR[d.iso3] === "start" ? -4 : ANCHOR[d.iso3] === "end" ? 4 : 0))
+          .attr("y", labelY).attr("text-anchor", d => ANCHOR[d.iso3])
           .attr("font-weight", d => d.iso3 === "ESP" ? 700 : 400)
-          .text(d => ({ ESP: "España", MCO: "Mónaco", NGA: "Nigeria", TCD: "Chad", USA: "EE. UU.", IND: "India", CHN: "China" }[d.iso3]) + " " + nf(d.esperanza_vida)));
+          .text(d => NAMES[d.iso3] + " " + nf(d.esperanza_vida)));
     }, 720);
   }
   layout();
@@ -171,7 +177,7 @@ d3.csv("esperanza_vida_2023.csv", d3.autoType).then(data => {
     <li><strong>España: ${nf(esp.esperanza_vida)} años</strong>, puesto ${espRank} de ${data.length}, en la cola derecha de Europa.</li>
     <li>África subsahariana tiene la mediana más baja (${nf(regions[0].med)} años): solo ${ssaAbove75.length} de ${ssa.length} países superan los 75 (${ssaAbove75.map(d => d.pais).join(", ")}).</li>
     <li>${spread.k} es la región más dispersa: de ${spread.lo.pais} (${nf(spread.lo.esperanza_vida)}) a ${spread.hi.pais} (${nf(spread.hi.esperanza_vida)}), ${nf(spread.hi.esperanza_vida - spread.lo.esperanza_vida)} años dentro de un mismo grupo. Una media lo ocultaría.</li>
-    <li>El color revela el gradiente de renta: medianas de ${byInc.map(nf).join(" → ")} años de renta baja a alta.</li>`);
+    <li>El color revela el gradiente de renta: medianas de ${byInc.map(v => nf(v)).join(" → ")} años de renta baja a alta.</li>`);
 
   d3.select("#tabla").html(`<table><thead><tr><th>#</th><th>País</th><th>Región</th><th>Renta</th><th>Años</th></tr></thead><tbody>${sorted.map((d, i) => `<tr><td class="n">${i + 1}</td><td>${d.pais}</td><td>${d.region}</td><td>${INC_ES[d.renta]}</td><td class="n">${nf(d.esperanza_vida)}</td></tr>`).join("")}</tbody></table>`);
 });
